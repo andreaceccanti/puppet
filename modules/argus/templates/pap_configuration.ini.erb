@@ -1,0 +1,30 @@
+[paps]
+
+## Trusted PAPs will be listed here
+
+[paps:properties]
+
+poll_interval = 300
+ordering = default
+
+[repository]
+
+consistency_check = true
+consistency_check.repair = false
+
+[standalone-service]
+
+entity_id = http://<%= @pap_host %>
+
+hostname = <%= @pap_host %>
+port = <%= @pap_port %>
+
+shutdown_port = <%= @pap_shutdown_port %>
+shutdown_command = shutdown
+
+
+[security]
+
+certificate = <%= @certificate_path %>
+private_key = <%= @private_key_path %>
+

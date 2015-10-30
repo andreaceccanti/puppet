@@ -1,0 +1,13 @@
+{
+  "name": "puppet-storm",
+  "version": "0.1.0",
+  "author": "puppet",
+  "summary": "A module for StoRM setup",
+  "license": "Apache-2.0",
+  "source": "github",
+  "project_page": "github",
+  "issues_url": "jira",
+  "dependencies": [
+  ]
+}
+
