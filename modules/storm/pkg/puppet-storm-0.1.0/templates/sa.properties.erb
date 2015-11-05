@@ -1,7 +1,0 @@
-name=<%= @name %>
-rootPath=/storage/<%= @name %>
-filesystemType=posixfs
-accessPoints=<%= scope.lookupvar("storm::storm_webdav::params::test_vos")[@name]['access_points'] %>
-vos=<%= scope.lookupvar("storm::storm_webdav::params::test_vos")[@name]['vos'] %>
-authenticatedReadEnabled=<%= scope.lookupvar("storm::storm_webdav::params::test_vos")[@name]['auth_read'] %>
-anonymousReadEnabled=<%= scope.lookupvar("storm::storm_webdav::params::test_vos")[@name]['anonymous_read'] %>
