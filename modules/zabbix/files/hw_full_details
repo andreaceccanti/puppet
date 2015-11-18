@@ -1,0 +1,29 @@
+#!/bin/bash
+TEMPFILE="/tmp/facts"
+
+#get data
+facter > $TEMPFILE
+
+n_cores=`grep -w processorcount $TEMPFILE | cut -d' ' -f3`
+n_cpus=`grep -w physicalprocessorcount $TEMPFILE | cut -d' ' -f3`
+total_ram=`grep -w memorysize $TEMPFILE | cut -d' ' -f3`
+interfaces=`grep -w interfaces $TEMPFILE | cut -d' ' -f3 | tr ',' ' '`
+disks=`grep -w blockdevices $TEMPFILE | cut -d' ' -f3 | tr ',' ' '`
+
+echo "CPUs       : $n_cpus"
+echo "Total cores: $n_cores"
+echo "Total RAM  : $total_ram GB"
+echo "Hard disks : $disks"
+
+for hd in $disks; do
+  fact_model="blockdevice_"$hd"_model"
+  fact_size="blockdevice_"$hd"_size"
+  model=`grep -w $fact_model $TEMPFILE | cut -d' ' -f3`
+  size=`grep -w $fact_size $TEMPFILE | cut -d' ' -f3`
+  size_gb=`expr $size / 1000000000`
+
+  if [ -z $model ]; then model='VirtIO'; fi
+
+  printf '%s   model: %-20s   size: %4s GB \n' $hd $model $size_gb
+done
+
