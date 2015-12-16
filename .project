@@ -3,6 +3,7 @@
 	<name>puppet</name>
 	<comment></comment>
 	<projects>
+		<project>ci-puppet-modules</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

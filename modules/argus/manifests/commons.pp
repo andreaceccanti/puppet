@@ -23,11 +23,13 @@ class argus::commons inherits argus::params {
   exec {
     'egi-repo':
       command => 'wget https://github.com/cnaf/ci-puppet-modules/raw/master/modules/puppet-egi-trust-anchors/files/egi-trust-anchors.repo -O /etc/yum.repos.d/egi-trust-anchors.repo',
-      onlyif  => "test ! -f /etc/yum.repos.d/egi-trust-anchors.repo";
+      onlyif  => "test ! -f /etc/yum.repos.d/egi-trust-anchors.repo",
+      require => Package['wget'];
 
     'test-ca':
       command => 'wget http://radiohead.cnaf.infn.it:9999/view/All/job/repo_test_ca/lastSuccessfulBuild/artifact/test-ca.repo -O /etc/yum.repos.d/test-ca.repo',
-      onlyif  => "test ! -f /etc/yum.repos.d/test-ca.repo";
+      onlyif  => "test ! -f /etc/yum.repos.d/test-ca.repo",
+      require => Package['wget'];
   }
 
   file {
@@ -39,6 +41,9 @@ class argus::commons inherits argus::params {
   }
 
   package {
+    'wget':
+      ensure => present;
+
     'ca_INFN-CA*':
       ensure  => present,
       require => Exec['egi-repo'];
