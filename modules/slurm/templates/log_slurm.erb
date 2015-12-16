@@ -1,0 +1,35 @@
+## 
+# SLURM Logrotate Configuration 
+## 
+<%= scope.lookupvar('slurm::params::log_dir') %>/*log { 
+
+    compress  
+
+    missingok  
+
+    nocopytruncate  
+
+    nocreate  
+
+    nodelaycompress  
+
+    nomail  
+
+    notifempty  
+
+    noolddir  
+
+    rotate 5  
+
+    sharedscripts  
+
+    size=5M  
+
+    create 640 slurm root  
+
+    postrotate  
+
+        /etc/init.d/<%= scope.lookupvar('slurm::params::service_name') %> reconfig  
+
+    endscript  
+} 
