@@ -1,0 +1,64 @@
+#%Module 1.0
+#
+#  Intel Parallel Studio XE 2013 module:
+# 
+
+# Define prefix so PATH and MANPATH can be updated.
+proc ModulesHelp { } {
+	puts stderr "This modulefile defines the library paths,"
+	puts stderr "include paths and man path needed to use "
+	puts stderr "the Intel Parellel Studio XE 2013."
+}
+
+set           root	/software/intel_parallel_studio_xe_2013/composer_xe_2013.3.163
+set	      microot	/opt/intel/mic
+
+setenv        TBBROOT	$root/tbb 
+setenv        IDB_HOME	$root/bin/intel64
+setenv        CPATH	$root/mkl/include:$root/tbb/include 
+setenv        NLSPATH	$root/compiler/lib/intel64/locale/%l_%t/%N
+append-path   NLSPATH   $root/ipp/lib/intel64/locale/%l_%t/%N
+append-path   NLSPATH   $root/mkl/lib/intel64/locale/%l_%t/%N
+append-path   NLSPATH   $root/debugger/intel64/locale/%l_%t/%N
+
+setenv        SINK_LD_LIBRARY_PATH	$root/compiler/lib/mic
+
+setenv	      MKLROOT	$root/mkl
+setenv        INTEL_LICENSE_FILE	$root/licenses:/opt/intel/licenses:/root/intel/licenses
+setenv        IPPROOT	$root/ipp
+
+setenv        LIBRARY_PATH	$root/compiler/lib/intel64
+append-path   LIBRARY_PATH	$root/ipp/lib/intel64
+append-path   LIBRARY_PATH	$root/mkl/lib/intel64
+append-path   LIBRARY_PATH	$root/tbb/lib/intel64/gcc4.4
+
+setenv	      MIC_LD_LIBRARY_PATH	$root/mic
+append-path   MIC_LD_LIBRARY_PATH	$microot/coi/device-linux-release/lib
+append-path   MIC_LD_LIBRARY_PATH	$microot/myo/lib
+append-path   MIC_LD_LIBRARY_PATH	$root/compiler/lib/mic
+append-path   MIC_LD_LIBRARY_PATH	$root/mkl/lib/mic
+append-path   MIC_LD_LIBRARY_PATH	$root/tbb/lib/mic
+
+setenv	      VTUNE_AMPLIFIER_XE_2013_DIR	/software/intel_parallel_studio_xe_2013/vtune_amplifier_xe_2013
+setenv        INCLUDE	$root/mkl/include
+
+append-path  PATH          $root/bin/intel64
+append-path  PATH          $root/mpirt/bin/intel64
+append-path  PATH          $root/bin/intel64_mic
+append-path  PATH          $root/debugger/gui/intel64
+append-path  PATH          /software/intel_parallel_studio_xe_2013/inspector_xe_2013/bin64
+append-path  PATH          /software/intel_parallel_studio_xe_2013/vtune_amplifier_xe_2013/bin64
+
+prepend-path  LD_LIBRARY_PATH  /software/intel_parallel_studio_xe_2013/composerxe/lib/mic
+prepend-path  LD_LIBRARY_PATH  $root/compiler/lib/intel64
+prepend-path  LD_LIBRARY_PATH  $microot/coi/host-linux-release/lib
+prepend-path  LD_LIBRARY_PATH  $microot/myo/lib
+prepend-path  LD_LIBRARY_PATH  $root/mpirt/lib/intel64
+prepend-path  LD_LIBRARY_PATH  $root/ipp/lib/intel64
+prepend-path  LD_LIBRARY_PATH  $microot/coi/host-linux-release/lib
+prepend-path  LD_LIBRARY_PATH  $root/mkl/lib/intel64
+prepend-path  LD_LIBRARY_PATH  $root/tbb/lib/intel64/gcc4.4
+
+prepend-path  MANPATH	$root/man/en_US
+prepend-path  MANPATH   /software/intel_parallel_studio_xe_2013/vtune_amplifier_xe_2013/man
+prepend-path  MANPATH   /software/intel_parallel_studio_xe_2013/inspector_xe_2013/man

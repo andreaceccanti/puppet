@@ -1,0 +1,14 @@
+#%Module 1.0
+#
+#  Intel OpenCL module for use with 'environment-modules' package:
+# 
+
+# Define prefix so PATH and MANPATH can be updated.
+proc ModulesHelp { } {
+	puts stderr "This modulefile defines the library paths and"
+	puts stderr "include paths needed to use Intel OpenCL."
+}
+
+prereq        ips-xe-2013
+
+prepend-path  LD_LIBRARY_PATH	/software/intel/opencl-1.2-3.0.67279/lib64
