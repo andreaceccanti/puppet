@@ -1,0 +1,17 @@
+uid nslcd
+<% if @osfamily == 'Debian' %>
+gid nslcd
+<% else %>
+gid ldap
+<% end %>
+# This comment prevents repeated auto-migration of settings.
+#uri ldap://127.0.0.1/
+#base dc=example,dc=com
+#
+uri ldap://ldap-s.cr.cnaf.infn.it/ ldap://ldap-m.cr.cnaf.infn.it/
+base ou=cnaf,o=infn,c=it
+base passwd ou=cnaf,o=infn,c=it 
+filter passwd (|(loginShell=/sbin/nologin)(seeAlso=ou=<%= @ldap_role %>))
+ssl no
+tls_cacertdir /etc/openldap/cacerts
+

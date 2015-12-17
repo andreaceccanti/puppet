@@ -1,0 +1,13 @@
+{
+  "name": "puppet-ldapauth",
+  "version": "0.1.0",
+  "author": "Marco Caberletti",
+  "summary": "LDAP authN and authZ",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": "",
+  "issues_url": "",
+  "dependencies": [
+  ]
+}
+

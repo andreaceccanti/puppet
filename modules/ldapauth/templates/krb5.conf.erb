@@ -1,0 +1,30 @@
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ default_realm = CR.CNAF.INFN.IT
+ dns_lookup_realm = false
+ dns_lookup_kdc = false
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+
+[realms]
+ EXAMPLE.COM = {
+  kdc = kerberos.example.com
+  admin_server = kerberos.example.com
+ }
+
+ CR.CNAF.INFN.IT = {
+  kdc = kdc-m.cr.cnaf.infn.it
+  kdc = kdc-s.cr.cnaf.infn.it
+  admin_server = kdc-m.cr.cnaf.infn.it
+ }
+
+[domain_realm]
+ .example.com = EXAMPLE.COM
+ example.com = EXAMPLE.COM
+ cr.cnaf.infn.it = CR.CNAF.INFN.IT
+ .cr.cnaf.infn.it = CR.CNAF.INFN.IT
