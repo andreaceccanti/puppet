@@ -1,0 +1,10 @@
+$ModLoad ommysql
+:msg, contains, "Can't contact LDAP server" ~
+:msg, contains, "Consumer: flush data to db" ~
+<% if @fqdn == @log_server %>
+*.warning;authpriv.none       :ommysql:127.0.0.1,Syslog,syslog,syslog
+$AllowedSender UDP, 127.0.0.1, 131.154.90.0/23
+$AllowedSender TCP, 127.0.0.1, 131.154.90.0/23
+<% else %>
+*.warning;authpriv.none       :ommysql:<%= @log_server %>,Syslog,syslog,syslog
+<% end %>

@@ -1,0 +1,10 @@
+module(load="imtcp")
+module(load="mmjsonparse")
+module(load="ommongodb")
+
+input(type="imtcp" port="514" ruleset="mongodb")
+
+
+ruleset(name="mongodb") {
+	action(type="ommongodb" server="127.0.0.1" db="<%= scope.lookupvar('rsyslog::params::db_name')%>" collection="<%= scope.lookupvar('rsyslog::params::table_name')%>" uid="<%= scope.lookupvar('rsyslog::params::db_user')%>" pwd="<%= scope.lookupvar('rsyslog::params::db_pwd')%>")
+}

@@ -1,0 +1,10 @@
+:msg, contains, "neutron-rootwrap" ~
+:msg, contains, "nova.compute.resource_tracker" ~
+:msg, contains, "Can't contact LDAP server" ~
+:msg, contains, "Consumer: flush data to db" ~
+#:msg, contains, "DHCP" ~
+:msg, contains, "TRACE" ~
+:msg, contains, "DEBUG" ~
+:msg, contains, "mysqlchk" ~
+
+*.*		@@<%= @log_server %>:514
