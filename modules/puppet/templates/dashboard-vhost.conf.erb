@@ -1,0 +1,96 @@
+LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-3.0.19/ext/apache2/mod_passenger.so
+PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-3.0.19 
+PassengerRuby /usr/bin/ruby
+
+# you may want to tune these settings
+PassengerHighPerformance on
+PassengerMaxPoolSize 12
+PassengerPoolIdleTime 1500
+# PassengerMaxRequests 1000
+PassengerStatThrottleRate 120
+RailsAutoDetect On
+
+Listen 3000
+<VirtualHost *:3000>
+        ServerName <%= @puppet_server %> 
+        DocumentRoot /usr/share/puppet-dashboard/public/
+        <Directory /usr/share/puppet-dashboard/public/>
+                Options None
+                Order allow,deny
+                allow from all
+        </Directory>
+  ErrorLog /var/log/httpd/<%= @puppet_server %>_error.log
+  LogLevel warn
+  CustomLog /var/log/httpd/<%= @puppet_server %>_access.log combined
+  ServerSignature On
+
+# Uncomment this section to enable basic auth. This section can also be copied
+# to the HTTPS VirtualHost example below.
+   # For report submission from masters.
+   <Location /reports/upload>
+       <Limit POST>
+           # Configuration restricts HTTP actions to POST only
+           Order allow,deny
+           Allow from all
+           Satisfy any
+       </Limit>
+   </Location>
+#
+#   # For node definitions from masters.
+   <Location /nodes>
+       <Limit GET>
+           # Configuration restricts HTTP actions to GET only
+           Order allow,deny
+           Allow from all
+           Satisfy any
+       </Limit>
+   </Location>
+#
+#   # For web access by humans.
+   <Location "/">
+       AuthType basic
+       AuthName "Puppet Dashboard"
+       Require valid-user
+       AuthBasicProvider file
+       AuthUserFile /etc/httpd/passwords
+   </Location>
+
+</VirtualHost>
+
+# Uncomment this section to enable HTTPS (SSL)
+Listen 3333
+<VirtualHost *:3333>
+        SSLEngine on
+        SSLProtocol -ALL +SSLv3 +TLSv1
+        SSLCipherSuite ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:-LOW:-SSLv2:-EXP
+
+        SSLCertificateFile        /var/lib/puppet/ssl/certs/<%= @puppet_server %>.pem
+        SSLCertificateKeyFile     /var/lib/puppet/ssl/private_keys/<%= @puppet_server %>.pem
+        SSLCACertificateFile      /var/lib/puppet/ssl/ca/ca_crt.pem
+
+        # If Apache complains about invalid signatures on the CRL, you can try disabling
+        # CRL checking by commenting the next line, but this is not recommended.
+        SSLCARevocationFile       /var/lib/puppet/ssl/ca/ca_crl.pem
+
+        SSLVerifyClient optional
+        SSLVerifyDepth  1
+        SSLOptions +StdEnvVars
+
+        ServerName <%= @puppet_server %>
+        DocumentRoot /usr/share/puppet-dashboard/public
+        <Directory   /usr/share/puppet-dashboard/public>
+                Options None
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+        <Location "/">
+               AuthType basic
+               AuthName "Puppet Dashboard"
+               Require valid-user
+               AuthBasicProvider file
+               AuthUserFile /etc/httpd/passwords
+        </Location>
+
+</VirtualHost>
+

@@ -1,0 +1,17 @@
+[main]
+    logdir = /var/log/puppet
+    rundir = /var/run/puppet
+    ssldir = $vardir/ssl
+
+[master]
+    certname = <%= @puppet_server %>
+    reports = store, http
+    reporturl = http://<%= @puppet_server %>:3000/reports/upload
+
+[agent]
+    classfile = $vardir/classes.txt
+    localconfig = $vardir/localconfig
+    server = <%= @puppet_server %>
+    report = true
+    pluginsync = true
+    certname = <%= @fqdn %>
