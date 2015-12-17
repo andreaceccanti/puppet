@@ -1,0 +1,43 @@
+## Dovecot configuration file
+
+
+# Protocols we want to be serving.
+protocols = imap pop3 
+
+#listen = *, ::
+
+# Base directory where to store runtime data.
+#base_dir = /var/run/dovecot/
+
+# Greeting message for clients.
+#login_greeting = Dovecot ready.
+
+#login_trusted_networks = 
+
+# Sepace separated list of login access check sockets (e.g. tcpwrap)
+#login_access_sockets = 
+
+#verbose_proctitle = no
+
+#shutdown_clients = yes
+
+# If non-zero, run mail commands via this many connections to doveadm server,
+# instead of running them directly in the same process.
+#doveadm_worker_count = 0
+# UNIX socket or host:port used for connecting to doveadm server
+#doveadm_socket_path = doveadm-server
+
+##
+## Dictionary server settings
+##
+
+
+dict {
+  #quota = mysql:/etc/dovecot/dovecot-dict-sql.conf.ext
+  #expire = sqlite:/etc/dovecot/dovecot-dict-sql.conf.ext
+}
+
+# Most of the actual configuration gets included below. The filenames are
+# first sorted by their ASCII value and parsed in that order. The 00-prefixes
+# in filenames are intended to make it easier to understand the ordering.
+!include conf.d/*.conf

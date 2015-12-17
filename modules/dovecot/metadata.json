@@ -1,0 +1,13 @@
+{
+  "name": "puppet-dovecot",
+  "version": "0.1.0",
+  "author": "Marco Caberletti",
+  "summary": "Dovecot module",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": "",
+  "issues_url": "",
+  "dependencies": [
+  ]
+}
+

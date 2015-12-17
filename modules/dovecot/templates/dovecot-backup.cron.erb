@@ -1,0 +1,26 @@
+#!/bin/sh
+USER=root
+DEST=/mnt/backup/dovecot
+
+SUBJECT="** DOVECOT CONF BACKUP ERROR **"
+EMAIL="mcaberletti@<%= @mail_server %>"
+MESSAGE=/tmp/message
+
+if [ ! -d $DEST ]; then
+	echo "Backup fail" > $MESSAGE
+	echo "No destination directory found" >> $MESSAGE
+	/bin/mail -s "$SUBJECT" "$EMAIL"  < $MESSAGE
+	exit 1
+fi
+
+/bin/tar czf $DEST/dovecot-conf_`date -I`.tar.gz /etc/dovecot/* /etc/pki/dovecot/* /etc/cron.daily/dovecot-backup.cron 
+
+if [ $? -eq 0 ]; then
+	echo "Backup end Successfully :)"
+else
+	echo "Backup FAIL :(" > $MESSAGE
+	/bin/mail -s "$SUBJECT" "$EMAIL"  < $MESSAGE
+fi
+
+# Rimozione dump più vecchi di 7 giorni
+/usr/bin/find $DEST -type f -mtime +7 -exec rm {} \;
