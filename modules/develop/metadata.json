@@ -1,0 +1,13 @@
+{
+  "name": "puppet-develop",
+  "version": "0.1.0",
+  "author": "Marco Caberletti",
+  "summary": "Develop utility",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": "",
+  "issues_url": "",
+  "dependencies": [
+  ]
+}
+
