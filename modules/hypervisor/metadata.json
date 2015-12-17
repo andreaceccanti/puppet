@@ -1,0 +1,13 @@
+{
+  "name": "puppet-hypervisor",
+  "version": "0.1.0",
+  "author": "Marco Caberletti",
+  "summary": "KVM Hypervisor utility",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": "",
+  "issues_url": "",
+  "dependencies": [
+  ]
+}
+
