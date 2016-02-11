@@ -9,7 +9,7 @@ class argus::commons inherits argus::params {
       $install_repo_cmd = "yum install -y $release_package"
     }
     7       : {
-      $release_package = "http://radiohead.cnaf.infn.it:9999/job/repo_argus_EL7/lastSuccessfulBuild/artifact/argus_el7.repo"
+      $release_package = "https://github.com/argus-authz/repo/raw/gh-pages/yum/argus-beta-el7.repo"
       $install_repo_cmd = "wget -O /etc/yum.repos.d/argus_el7.repo $release_package"
     }
     default : {
