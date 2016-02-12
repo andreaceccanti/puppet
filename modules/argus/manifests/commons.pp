@@ -30,6 +30,11 @@ class argus::commons inherits argus::params {
       command => 'wget http://radiohead.cnaf.infn.it:9999/view/All/job/repo_test_ca/lastSuccessfulBuild/artifact/test-ca.repo -O /etc/yum.repos.d/test-ca.repo',
       onlyif  => "test ! -f /etc/yum.repos.d/test-ca.repo",
       require => Package['wget'];
+
+    'argus-repo':
+      command => $install_repo_cmd,
+      onlyif  => "test ! -f /etc/yum.repos.d/argus_el7.repo",
+      require => Package['wget'];
   }
 
   file {

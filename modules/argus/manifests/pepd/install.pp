@@ -1,9 +1,6 @@
 class argus::pepd::install {
-  package {
-    'argus-pep-server':
-      ensure => installed;
-
-    'argus-pepcli':
-      ensure => installed;
+  package { ['argus-pep-server', 'argus-pepcli']:
+    ensure  => installed,
+    require => Exec['argus-repo']
   }
 }

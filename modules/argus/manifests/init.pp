@@ -35,7 +35,7 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class argus {
+class argus inherits commons {
   include argus::pap
   include argus::pdp
   include argus::pepd
