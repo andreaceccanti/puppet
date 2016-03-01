@@ -14,4 +14,7 @@ class argus::pepd::params inherits argus::params {
   $group_map_file = '/etc/grid-security/groupmapfile'
   $grid_map_dir = '/etc/grid-security/gridmapdir'
 
+  $voms_dir = '/etc/grid-security/vomsdir'
+  $voms_map_file = '/etc/grid-security/voms-grid-mapfile'
+
 }

@@ -1,0 +1,8 @@
+"/testers.eu-emi.eu/Role=VO-Admin/Capability=NULL" .sgmtst
+"/testers.eu-emi.eu/Role=VO-Admin" .sgmtst
+"/testers.eu-emi.eu/Role=pilot/Capability=NULL" .piltst
+"/testers.eu-emi.eu/Role=pilot" .piltst
+"/testers.eu-emi.eu/Role=NULL/Capability=NULL" .tst
+"/testers.eu-emi.eu" .tst
+"/test.vo/Role=NULL/Capability=NULL" .tstvo
+"/test.vo" .tstvo
