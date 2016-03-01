@@ -49,6 +49,9 @@ class argus::commons inherits argus::params {
     'wget':
       ensure => present;
 
+    'haveged':
+      ensure => present;
+
     'ca_INFN-CA*':
       ensure  => present,
       require => Exec['egi-repo'];
@@ -60,5 +63,11 @@ class argus::commons inherits argus::params {
     'igi-test-ca*':
       ensure  => present,
       require => Exec['test-ca'];
+  }
+
+  service { 'haveged':
+    ensure  => running,
+    enable  => true,
+    require => Package['haveged']
   }
 }
