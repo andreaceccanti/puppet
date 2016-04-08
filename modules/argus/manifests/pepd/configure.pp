@@ -43,7 +43,7 @@ class argus::pepd::configure inherits argus::pepd::params {
     'voms_map_file':
       path   => $argus::pepd::params::voms_map_file,
       ensure => file,
-      source => "puppet:///module/argus/voms-grid-mapfile"
+      source => "puppet:///modules/argus/voms-grid-mapfile"
   }
 
   File['pep_conf_dir'] -> File['pep_conf']
