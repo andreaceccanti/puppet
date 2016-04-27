@@ -1,4 +1,4 @@
-class argus::pepd::configure inherits argus::pepd::params {
+class argus::pepd::configure ( $pdp_host, $pdp_port ) inherits argus::pepd::params {
   require argus::commons
   require argus::pepd::install
 

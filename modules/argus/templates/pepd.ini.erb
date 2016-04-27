@@ -11,7 +11,7 @@ pips = REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROF
 obligationHandlers = ACCOUNTMAP_OH
 
 [PDP]
-pdps = https://<%= scope.lookupvar("argus::params::pdp_host") %>:<%= scope.lookupvar("argus::params::pdp_port") %>/authz
+pdps = https://<%= scope.lookupvar("argus::params::pepd::pdp_host") %>:<%= scope.lookupvar("argus::params::pepd::pdp_port") %>/authz
 
 [SECURITY]
 serviceCertificate = <%= @certificate_path %>
