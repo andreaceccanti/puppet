@@ -4,4 +4,8 @@ class argus::pap::params inherits argus::params {
   $pap_auth = "${conf_dir}/pap_authorization.ini"
   $pap_conf = "${conf_dir}/pap_configuration.ini"
 
+  $pap_host = $fqdn
+  $pap_port = 8150
+  $pap_shutdown_port = 8151
+
 }

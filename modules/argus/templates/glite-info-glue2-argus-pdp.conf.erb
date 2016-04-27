@@ -1,0 +1,32 @@
+
+init = ARGUS_PAP_HOST=<%= @pap_host %> ARGUS_PDP_HOST=<%= @pdp_host %> ARGUS_PEP_HOST=<%= @pep_host %> glite-info-service-argus
+
+service_type = org.glite.Argus.PDP
+
+get_version = echo 1.0.0
+
+get_endpoint = echo https://$ARGUS_PDP_HOST:$ARGUS_PDP_PORT/authz
+
+# 0 = OK, 1 = Critical, 2 = Warning, 3 = Unknown, other = Other
+
+get_status =  curl -sk https://$ARGUS_PDP_HOST:$ARGUS_PDP_PORT/status | grep -q "Status: OK";
+
+WSDL_URL = nohttp://not.a.web.service/
+
+semantics_URL = https://twiki.cern.ch/twiki/bin/view/EMI/ArgusEMIDocumentation
+
+get_starttime = curl -sk https://$ARGUS_PDP_HOST:$ARGUS_PDP_PORT/status | grep ServiceStartupTime: | cut -d ' ' -f2
+
+get_acbr = echo NONE
+
+get_capabilities = echo security.authorization
+
+get_implementor = echo gLite
+
+get_implementationname = echo Argus
+
+get_implementationversion = curl -sk https://$ARGUS_PDP_HOST:$ARGUS_PDP_PORT/status | grep ServiceVersion: | cut -d ' ' -f2
+
+get_qualitylevel = echo 4
+
+get_servingstate = echo 4

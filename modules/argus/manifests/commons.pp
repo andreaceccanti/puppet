@@ -1,19 +1,23 @@
 class argus::commons inherits argus::params {
   case $lsbmajdistrelease {
-    5       : {
-      $release_package = "http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/base/emi-release-3.0.0-2.el5.noarch.rpm"
-      $install_repo_cmd = "yum install -y $release_package"
-      $repo_file = "/etc/yum.repos.d/emi3-base.repo"
-    }
     6       : {
       $release_package = "http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/base/emi-release-3.0.0-2.el6.noarch.rpm"
       $install_repo_cmd = "yum install -y $release_package"
       $repo_file = "/etc/yum.repos.d/emi3-base.repo"
+
+      $umd_repo = "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
+      $install_umd_cmd = "yum install -y $umd_repo"
+      $umd_repo_file = "/etc/yum.repos.d/UMD-3-base.repo"
     }
     7       : {
       $release_package = "https://github.com/argus-authz/repo/raw/gh-pages/yum/argus-beta-el7.repo"
       $install_repo_cmd = "wget -O /etc/yum.repos.d/argus_el7.repo $release_package"
       $repo_file = "/etc/yum.repos.d/argus_el7.repo"
+
+      $umd_repo = "http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm"
+      $install_umd_cmd = "yum install -y $umd_repo"
+      $umd_repo_file = "/etc/yum.repos.d/UMD-4-base.repo"
+
     }
     default : {
       fail("Unrecognized scientific linux major version: $lsbmajdistrelease")
@@ -38,6 +42,10 @@ class argus::commons inherits argus::params {
       command => $install_repo_cmd,
       onlyif  => "test ! -f $repo_file",
       require => Package['wget'];
+
+    'umd-repo':
+      command => $install_umd_cmd,
+      onlyif  => "test ! -f $umd_repo_file";
   }
 
   file {
@@ -68,9 +76,9 @@ class argus::commons inherits argus::params {
       require => Exec['test-ca'];
   }
 
-#  service { 'haveged':
-#    ensure  => running,
-#    enable  => true,
-#    require => Package['haveged']
-#  }
+  #  service { 'haveged':
+  #    ensure  => running,
+  #    enable  => true,
+  #    require => Package['haveged']
+  #  }
 }

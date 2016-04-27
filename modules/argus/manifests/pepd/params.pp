@@ -14,4 +14,7 @@ class argus::pepd::params inherits argus::params {
   $voms_dir = '/etc/grid-security/vomsdir'
   $voms_map_file = '/etc/grid-security/voms-grid-mapfile'
 
+  $pep_host = $fqdn
+  $pep_port = 8154
+  $pep_admin_port = 8155
 }
