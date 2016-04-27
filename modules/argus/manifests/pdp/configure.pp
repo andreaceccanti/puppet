@@ -1,4 +1,5 @@
 class argus::pdp::configure inherits argus::pdp::params {
+  require argus::commons
   require argus::pdp::install
 
   file {

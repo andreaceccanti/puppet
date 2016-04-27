@@ -1,4 +1,5 @@
 class argus::pepd::configure inherits argus::pepd::params {
+  require argus::commons
   require argus::pepd::install
 
   File {

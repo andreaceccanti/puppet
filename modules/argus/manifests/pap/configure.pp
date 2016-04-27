@@ -1,4 +1,5 @@
 class argus::pap::configure inherits argus::pap::params {
+  require argus::commons
   require argus::pap::install
 
   file {
