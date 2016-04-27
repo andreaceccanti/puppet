@@ -1,8 +1,4 @@
-class argus::params (
-  $pap_host_= $fqdn,
-  $pdp_host_ = $fqdn,
-  $pep_host_ = $fqdn
-) {
+class argus::params {
 
   $conf_dir = '/etc/argus'
 
