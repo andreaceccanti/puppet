@@ -6,7 +6,7 @@ adminPort = <%= @pdp_admin_port %>
 adminPassword = <%= @pdp_admin_password %>
 
 [POLICY]
-paps = https://<%= scope.lookupvar("argus::pap::params::pap_host") %>:<%= scope.lookupvar("argus::pap::params::pap_port") %>/pap/services/ProvisioningService
+paps = https://<%= scope.lookupvar("argus::params::pap_host") %>:<%= scope.lookupvar("argus::params::pap_port") %>/pap/services/ProvisioningService
 retentionInterval = 240
 
 [SECURITY]
