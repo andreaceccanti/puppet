@@ -68,9 +68,9 @@ class argus::commons inherits argus::params {
       require => Exec['test-ca'];
   }
 
-  service { 'haveged':
-    ensure  => running,
-    enable  => true,
-    require => Package['haveged']
-  }
+#  service { 'haveged':
+#    ensure  => running,
+#    enable  => true,
+#    require => Package['haveged']
+#  }
 }
