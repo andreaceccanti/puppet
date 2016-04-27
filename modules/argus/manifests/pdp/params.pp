@@ -1,4 +1,4 @@
-class argus::pdp::params ( $pap_host, $pap_port ) inherits argus::params {
+class argus::pdp::params inherits argus::params {
   $conf_dir = '/etc/argus/pdp'
   $pdp_conf = "${conf_dir}/pdp.ini"
 
