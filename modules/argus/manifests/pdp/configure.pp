@@ -4,7 +4,7 @@ class argus::pdp::configure (
   $pdp_host = $argus::params::pdp_host,
   $pdp_port = $argus::params::pdp_host,
 
-) {
+) inherits argus::params {
   require argus::commons
   require argus::pdp::install
 

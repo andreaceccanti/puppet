@@ -2,7 +2,8 @@ class argus::pap::configure (
   $pap_host = $argus::params::pap_host,
   $pap_port = $argus::params::pap_port
 
-) {
+) inherits argus::params {
+
   require argus::commons
   require argus::pap::install
 

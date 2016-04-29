@@ -6,7 +6,7 @@ class argus::bdii::configure (
   $pep_host = $argus::params::pep_host,
   $pep_port = $argus::params::pep_host
 
-) {
+) inherits argus::params {
 
   require argus::commons
   require argus::bdii::install
