@@ -4,13 +4,13 @@
 
 [paps:properties]
 
-poll_interval = 300
-ordering = default
+poll_interval = <%= @pap_poll_interval %>
+ordering = <%= @pap_ordering %>
 
 [repository]
 
-consistency_check = true
-consistency_check.repair = false
+consistency_check = <%= @pap_consistency_check %>
+consistency_check.repair = <%= @pap_consistency_check_repair %>
 
 [standalone-service]
 
@@ -20,7 +20,7 @@ hostname = <%= @fqdn %>
 port = <%= @pap_port %>
 
 shutdown_port = <%= @pap_shutdown_port %>
-shutdown_command = shutdown
+shutdown_command = <%= @pap_shutdown_command %>
 
 
 [security]

@@ -7,11 +7,11 @@ adminPassword = <%= @pdp_admin_password %>
 
 [POLICY]
 paps = https://<%= @pap_host %>:<%= @pap_port %>/pap/services/ProvisioningService
-retentionInterval = 240
+retentionInterval = <%= @pdp_retention_interval %>
 
 [SECURITY]
 serviceCertificate = <%= @certificate_path %>
 servicePrivateKey = <%= @private_key_path %>
 trustInfoDir = <%= @trust_info_dir %>
-enableSSL = true
+enableSSL = <%= @pdp_enable_ssl %>
 

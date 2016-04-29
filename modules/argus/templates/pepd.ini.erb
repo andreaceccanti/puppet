@@ -6,9 +6,9 @@ adminPort = <%= @pep_admin_port %>
 adminPassword = <%= @pep_admin_port %>
 
 # PIPs to apply on incoming request
-pips = REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP
+pips = <%= @pep_pips %>
 # OHs to apply on response
-obligationHandlers = ACCOUNTMAP_OH
+obligationHandlers = <%= @pep_obligation_handlers %>
 
 [PDP]
 pdps = https://<%= @pdp_host %>:<%= @pdp_port %>/authz
@@ -17,39 +17,39 @@ pdps = https://<%= @pdp_host %>:<%= @pdp_port %>/authz
 serviceCertificate = <%= @certificate_path %>
 servicePrivateKey = <%= @private_key_path %>
 trustInfoDir = <%= @trust_info_dir %>
-enableSSL = <%= @enable_ssl %>
+enableSSL = <%= @pep_enable_ssl %>
 requireClientCertAuthentication = <%= @req_client_cert_auth %>
 
 #
 # Policy Information Points (PIP) configuration
 #
 [REQVALIDATOR_PIP]
-parserClass = org.glite.authz.pep.pip.provider.RequestValidatorPIPIniConfigurationParser
-validateRequestSubjects = true
-validateRequestResources = true
-validateRequestAction = true
-validateRequestEnvironment = false
+parserClass = <%= @request_validator_pip_parser_class %>
+validateRequestSubjects = <%= @request_validator_pip_validate_request_subjects %>
+validateRequestResources = <%= @request_validator_pip_validate_request_resources %>
+validateRequestAction = <%= @request_validator_pip_validate_request_action %>
+validateRequestEnvironment = <%= @request_validator_pip_validate_request_environment %>
 
 [OPENSSLSUBJECT_PIP]
-parserClass = org.glite.authz.pep.pip.provider.OpenSSLSubjectPIPIniConfigurationParser
-opensslSubjectAttributeIDs = http://glite.org/xacml/attribute/subject-issuer urn:oasis:names:tc:xacml:1.0:subject:subject-id
-opensslSubjectAttributeDatatypes = http://www.w3.org/2001/XMLSchema#string
+parserClass = <%= @openssl_pip_parser_class %>
+opensslSubjectAttributeIDs = <%= @openssl_pip_subject_attribute_ids %>
+opensslSubjectAttributeDatatypes = <%= @openssl_pip_subject_attribute_datatypes %>
 
 [GLITEXACMLPROFILE_PIP]
-parserClass = org.glite.authz.pep.pip.provider.AuthorizationProfilePIPIniConfigurationParser
-vomsInfoDir = /etc/grid-security/vomsdir
-acceptedProfileIDs = http://glite.org/xacml/profile/grid-ce/1.0 http://glite.org/xacml/profile/grid-wn/1.0
+parserClass = <%= @glite_xacml_pip_parser_class %>
+vomsInfoDir = <%= @voms_dir %>
+acceptedProfileIDs = <%= @glite_xacml_pip_accepted_profile_ids %>
 
 [COMMONXACMLPROFILE_PIP]
-parserClass = org.glite.authz.pep.pip.provider.CommonXACMLAuthorizationProfilePIPIniConfigurationParser
-vomsInfoDir = /etc/grid-security/vomsdir
-acceptedProfileIDs = http://dci-sec.org/xacml/profile/common-authz/1.1
+parserClass = <%= @common_xacml_pip_parser_class %>
+vomsInfoDir = <%= @voms_dir %>
+acceptedProfileIDs = <%= @common_xacml_pip_accepted_profile_ids %>
 
 #
 # Obligation Handlers (OH) configuration
 #
 [ACCOUNTMAP_OH]
-parserClass = org.glite.authz.pep.obligation.dfpmap.DFPMObligationHandlerConfigurationParser
+parserClass = <%= @account_map_parser_class %>
 accountMapFile = <%= @account_map_file %>
 groupMapFile = <%= @group_map_file %>
 gridMapDir = <%= @grid_map_dir %>
