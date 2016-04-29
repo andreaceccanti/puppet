@@ -1,4 +1,5 @@
 class argus::bdii::install {
+
   package {
     'bdii':
       ensure => installed;

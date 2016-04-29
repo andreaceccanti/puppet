@@ -1,39 +1,48 @@
-class argus::bdii::configure ($pap_host, $pap_port, $pdp_host, $pdp_port, $pep_host, $pep_port) inherits argus::bdii::params {
+class argus::bdii::configure (
+  $pap_host = $argus::params::pap_host,
+  $pap_port = $argus::params::pap_host,
+  $pdp_host = $argus::params::pdp_host,
+  $pdp_port = $argus::params::pdp_host,
+  $pep_host = $argus::params::pep_host,
+  $pep_port = $argus::params::pep_host
+
+) {
+
   require argus::commons
   require argus::bdii::install
 
   file {
     'gip_script':
-      path    => $argus::bdii::params::provider_script,
+      path    => $argus::params::bdii_provider_script,
       ensure  => present,
       owner   => ldap,
       group   => ldap,
       mode    => '0755',
       content => template('argus/glite-info-glue2-provider-service-argus.erb');
 
-    'pap_conf':
-      path    => $argus::bdii::params::pap_conf,
+    'bdii_pap_conf':
+      path    => $argus::params::bdii_pap_conf,
       ensure  => present,
       owner   => root,
       group   => root,
       content => template("argus/glite-info-glue2-argus-pap.conf.erb");
 
-    'pdp_conf':
-      path    => $argus::bdii::params::pdp_conf,
+    'bdii_pdp_conf':
+      path    => $argus::params::bdii_pdp_conf,
       ensure  => present,
       owner   => root,
       group   => root,
       content => template("argus/glite-info-glue2-argus-pdp.conf.erb");
 
-    'pep_conf':
-      path    => $argus::bdii::params::pep_conf,
+    'bdii_pep_conf':
+      path    => $argus::params::bdii_pep_conf,
       ensure  => present,
       owner   => root,
       group   => root,
       content => template("argus/glite-info-glue2-argus-pep.conf.erb");
 
-    'service_conf':
-      path    => $argus::bdii::params::service_conf,
+    'bdii_service_conf':
+      path    => $argus::params::bdii_service_conf,
       ensure  => present,
       owner   => root,
       group   => root,
