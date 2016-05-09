@@ -4,6 +4,5 @@ class argus::pap::service  {
   service { 'argus-pap':
     ensure    => running,
     enable    => true,
-    subscribe => File[$argus::params::pap_auth, $argus::params::pap_conf]
   }
 }

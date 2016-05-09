@@ -29,7 +29,16 @@ class argus::pepd::configure (
   $group_map_file                                     = $argus::params::group_map_file,
   $grid_map_dir                                       = $argus::params::grid_map_dir,
   $voms_dir                                           = $argus::params::voms_dir,
-  $voms_map_file                                      = $argus::params::voms_map_file
+  $voms_map_file                                      = $argus::params::voms_map_file,
+  $pep_env_file                                       = $argus::params::pep_env_file,
+  $pepd_jopts                                         = $argus::params::pepd_jopts,
+  $pepd_start_jopts                                   = $argus::params::pepd_start_jopts,
+  $pepd_home                                          = $argus::params::pepd_home,
+  $pepd_logdir                                        = $argus::params::pepd_libdir,
+  $pepd_libdir                                        = $argus::params::pepd_libdir,
+  $pepd_endorseddir                                   = $argus::params::pepd_endorseddir,
+  $pepd_provideddir                                   = $argus::params::pepd_provideddir,
+  $pepd_pid                                           = $argus::params::pepd_pid
 
 ) inherits argus::params {
 
@@ -38,7 +47,8 @@ class argus::pepd::configure (
 
   File {
     owner => root,
-    group => root
+    group => root,
+    notify => Service['argus-pepd']
   }
 
   file {
@@ -78,7 +88,12 @@ class argus::pepd::configure (
     'voms_map_file':
       path   => $voms_map_file,
       ensure => file,
-      source => "puppet:///modules/argus/voms-grid-mapfile"
+      source => "puppet:///modules/argus/voms-grid-mapfile";
+
+    'pepd_env_file':
+      path    => $pep_env_file,
+      ensure  => file,
+      content => template('argus/argus-pepd.erb');
   }
 
   File['pep_conf_dir'] -> File['pep_conf']

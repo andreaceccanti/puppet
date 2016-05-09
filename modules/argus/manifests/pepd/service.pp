@@ -4,7 +4,6 @@ class argus::pepd::service {
 
   service { 'argus-pepd':
     ensure    => running,
-    enable    => true,
-    subscribe => File[$argus::params::pep_conf]
+    enable    => true
   }
 }

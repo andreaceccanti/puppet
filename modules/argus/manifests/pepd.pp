@@ -29,7 +29,16 @@ class argus::pepd (
   $group_map_file                                     = $argus::params::group_map_file,
   $grid_map_dir                                       = $argus::params::grid_map_dir,
   $voms_dir                                           = $argus::params::voms_dir,
-  $voms_map_file                                      = $argus::params::voms_map_file
+  $voms_map_file                                      = $argus::params::voms_map_file,
+  $pep_env_file                                       = $argus::params::pep_env_file,
+  $pepd_jopts                                         = $argus::params::pepd_jopts,
+  $pepd_start_jopts                                   = $argus::params::pepd_start_jopts,
+  $pepd_home                                          = $argus::params::pepd_home,
+  $pepd_logdir                                        = $argus::params::pepd_libdir,
+  $pepd_libdir                                        = $argus::params::pepd_libdir,
+  $pepd_endorseddir                                   = $argus::params::pepd_endorseddir,
+  $pepd_provideddir                                   = $argus::params::pepd_provideddir,
+  $pepd_pid                                           = $argus::params::pepd_pid
 
 ) inherits argus::params {
 
@@ -67,7 +76,16 @@ class argus::pepd (
 	  group_map_file                                     => $group_map_file,
 	  grid_map_dir                                       => $grid_map_dir,
 	  voms_dir                                           => $voms_dir,
-	  voms_map_file                                      => $voms_map_file
+	  voms_map_file                                      => $voms_map_file,
+	  pep_env_file                                       => $pep_env_file,
+	  pepd_jopts                                         => $pepd_jopts,
+	  pepd_start_jopts                                   => $pepd_start_jopts,
+	  pepd_home                                          => $pepd_home,
+	  pepd_logdir                                        => $pepd_libdir,
+	  pepd_libdir                                        => $pepd_libdir,
+	  pepd_endorseddir                                   => $pepd_endorseddir,
+	  pepd_provideddir                                   => $pepd_provideddir,
+	  pepd_pid                                           => $pepd_pid
   }->
   class { 'argus::pepd::service': }
 

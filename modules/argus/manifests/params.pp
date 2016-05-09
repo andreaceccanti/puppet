@@ -20,6 +20,7 @@ class argus::params {
   $pep_admin_port = 8155
 
   # PAP
+  $pap_env_file = "/etc/sysconfig/argus-pap"
   $pap_conf_dir = "${conf_dir}/pap"
   $pap_admin_prop = "${pap_conf_dir}/pap-admin.properties"
   $pap_auth = "${pap_conf_dir}/pap_authorization.ini"
@@ -29,15 +30,28 @@ class argus::params {
   $pap_ordering = "default"
   $pap_consistency_check = true
   $pap_consistency_check_repair = false
+  $pap_home = '/usr/share/argus/pap'
+  $pap_pid = '/var/run/argus-pap.pid'
+  $pap_java_opts = ''
 
   # PDP
+  $pdp_env_file = "/etc/sysconfig/argus-pdp"
   $pdp_conf_dir = "${conf_dir}/pdp"
   $pdp_conf = "${pdp_conf_dir}/pdp.ini"
   $pdp_admin_password = 'pdpadmin_password'
   $pdp_retention_interval = "240"
   $pdp_enable_ssl = true
+  $pdp_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
+	$pdp_start_jopts=""
+	$pdp_home="/usr/share/argus/pdp"
+	$pdp_logdir="/var/log/argus/pdp"
+	$pdp_libdir="/var/lib/argus/pdp/lib"
+	$pdp_endorseddir="/var/lib/argus/pdp/lib/endorsed"
+	$pdp_provideddir="/var/lib/argus/pdp/lib/provided"
+	$pdp_pid="/var/run/argus-pdp.pid"
 
   # PEP
+  $pep_env_file = "/etc/sysconfig/argus-pepd"
   $pep_conf_dir = "${conf_dir}/pepd"
   $pep_conf = "${pep_conf_dir}/pepd.ini"
   $pep_admin_password = 'pepdadmin_password'
@@ -71,6 +85,15 @@ class argus::params {
 
   $voms_dir = '/etc/grid-security/vomsdir'
   $voms_map_file = '/etc/grid-security/voms-grid-mapfile'
+
+	$pepd_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
+	$pepd_start_jopts=""
+	$pepd_home="/usr/share/argus/pepd"
+	$pepd_logdir="/var/log/argus/pepd"
+	$pepd_libdir="/var/lib/argus/pepd/lib"
+	$pepd_endorseddir="/var/lib/argus/pepd/lib/endorsed"
+	$pepd_provideddir="/var/lib/argus/pepd/lib/provided"
+	$pepd_pid="/var/run/argus-pepd.pid"
 
   # BDII
   $bdii_conf_dir = "/etc/glite/info/service"

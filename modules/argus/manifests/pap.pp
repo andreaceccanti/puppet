@@ -9,7 +9,11 @@ class argus::pap (
   $pap_poll_interval            = $argus::params::pap_poll_interval,
   $pap_ordering                 = $argus::params::pap_ordering,
   $pap_consistency_check        = $argus::params::pap_consistency_check,
-  $pap_consistency_check_repair = $argus::params::pap_consistency_check_repair
+  $pap_consistency_check_repair = $argus::params::pap_consistency_check_repair,
+  $pap_env_file                 = $argus::params::pap_env_file,
+  $pap_home                     = $argus::params::pap_home,
+  $pap_pid                      = $argus::params::pap_pid,
+  $pap_java_opts                = $argus::params::pap_java_opts
 
 ) inherits argus::params {
 
@@ -27,7 +31,11 @@ class argus::pap (
 	  pap_poll_interval            => $pap_poll_interval,
 	  pap_ordering                 => $pap_ordering,
 	  pap_consistency_check        => $pap_consistency_check,
-	  pap_consistency_check_repair => $pap_consistency_check_repair
+	  pap_consistency_check_repair => $pap_consistency_check_repair,
+	  pap_env_file                 => $pap_env_file,
+	  pap_home                     => $pap_home,
+	  pap_pid                      => $pap_pid,
+	  pap_java_opts                => $pap_java_opts
   }->
   class { 'argus::pap::service': }
 }

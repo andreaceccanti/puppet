@@ -4,6 +4,6 @@ class argus::pdp::service {
   service { 'argus-pdp':
     ensure    => running,
     enable    => true,
-    subscribe => File[$argus::params::pdp_conf]
+    subscribe => File['pdp_conf', 'pdp_env_file']
   }
 }
