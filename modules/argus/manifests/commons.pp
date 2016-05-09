@@ -20,7 +20,7 @@ class argus::commons inherits argus::params {
 
     }
     default : {
-      fail("Unrecognized scientific linux major version: $lsbmajdistrelease")
+      fail("Unrecognized scientific Linux major version: $lsbmajdistrelease")
     }
   }
 
@@ -60,9 +60,6 @@ class argus::commons inherits argus::params {
     'wget':
       ensure => present;
 
-    'haveged':
-      ensure => present;
-
     'ca_INFN-CA*':
       ensure  => present,
       require => Exec['egi-repo'];
@@ -76,9 +73,4 @@ class argus::commons inherits argus::params {
       require => Exec['test-ca'];
   }
 
-  #  service { 'haveged':
-  #    ensure  => running,
-  #    enable  => true,
-  #    require => Package['haveged']
-  #  }
 }

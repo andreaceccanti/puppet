@@ -23,7 +23,6 @@ class argus::pap::configure (
   File {
     owner => root,
     group => root,
-    notify => Service['argus-pap']
   }
 
   file {
@@ -52,5 +51,5 @@ class argus::pap::configure (
       content => template('argus/argus-pap.erb')
   }
 
-  File['pap_conf_dir'] -> File[['pap_admin', 'pap_auth', 'pap_conf', 'pap_env_file']]
+  File['pap_conf_dir'] -> File[['pap_admin', 'pap_auth', 'pap_conf']] -> File['pap_env_file']
 }

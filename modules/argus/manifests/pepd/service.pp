@@ -4,6 +4,7 @@ class argus::pepd::service {
 
   service { 'argus-pepd':
     ensure    => running,
-    enable    => true
+    enable    => true,
+    subscribe => File['pep_conf','pepd_env_file']
   }
 }

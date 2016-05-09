@@ -48,7 +48,6 @@ class argus::pepd::configure (
   File {
     owner => root,
     group => root,
-    notify => Service['argus-pepd']
   }
 
   file {
