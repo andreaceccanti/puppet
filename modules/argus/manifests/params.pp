@@ -86,6 +86,11 @@ class argus::params {
   $voms_dir = '/etc/grid-security/vomsdir'
   $voms_map_file = '/etc/grid-security/voms-grid-mapfile'
 
+  $use_secondary_group_names_for_mapping = false
+  $prefer_dn_for_login_name =  true
+  $prefer_dn_for_primary_group_name = true
+  $no_primary_group_name_is_error = false
+
 	$pepd_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
 	$pepd_start_jopts=""
 	$pepd_home="/usr/share/argus/pepd"

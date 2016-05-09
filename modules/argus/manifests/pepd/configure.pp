@@ -38,7 +38,11 @@ class argus::pepd::configure (
   $pepd_libdir                                        = $argus::params::pepd_libdir,
   $pepd_endorseddir                                   = $argus::params::pepd_endorseddir,
   $pepd_provideddir                                   = $argus::params::pepd_provideddir,
-  $pepd_pid                                           = $argus::params::pepd_pid
+  $pepd_pid                                           = $argus::params::pepd_pid,
+  $use_secondary_group_names_for_mapping              = $argus::params::use_secondary_group_names_for_mapping,
+  $prefer_dn_for_login_name                           = $argus::params::prefer_dn_for_login_name,
+  $prefer_dn_for_primary_group_name                   = $argus::params::prefer_dn_for_primary_group_name,
+  $no_primary_group_name_is_error                     = $argus::params::no_primary_group_name_is_error
 
 ) inherits argus::params {
 
