@@ -33,11 +33,6 @@ class argus::commons inherits argus::params {
       onlyif  => "test ! -f /etc/yum.repos.d/egi-trust-anchors.repo",
       require => Package['wget'];
 
-    'test-ca':
-      command => 'wget http://radiohead.cnaf.infn.it:9999/view/All/job/repo_test_ca/lastSuccessfulBuild/artifact/test-ca.repo -O /etc/yum.repos.d/test-ca.repo',
-      onlyif  => "test ! -f /etc/yum.repos.d/test-ca.repo",
-      require => Package['wget'];
-
     'argus-repo':
       command => $install_repo_cmd,
       onlyif  => "test ! -f $repo_file",
@@ -60,17 +55,9 @@ class argus::commons inherits argus::params {
     'wget':
       ensure => present;
 
-    'ca_INFN-CA*':
-      ensure  => present,
-      require => Exec['egi-repo'];
-
     'ca-policy-egi-core':
       ensure  => present,
       require => Exec['egi-repo'];
-
-    'igi-test-ca*':
-      ensure  => present,
-      require => Exec['test-ca'];
   }
 
 }
