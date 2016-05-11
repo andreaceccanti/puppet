@@ -1,9 +1,9 @@
 class argus::commons inherits argus::params {
   case $lsbmajdistrelease {
     6       : {
-      $release_package = "http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/base/emi-release-3.0.0-2.el6.noarch.rpm"
-      $install_repo_cmd = "yum install -y $release_package"
-      $repo_file = "/etc/yum.repos.d/emi3-base.repo"
+      $release_package = "http://radiohead.cnaf.infn.it:9999/view/pkg/job/pkg.argus/lastSuccessfulBuild/artifact/argus.repo"
+      $install_repo_cmd = "wget -O /etc/yum.repos.d/argus_el6.repo $release_package"
+      $repo_file = "/etc/yum.repos.d/argus_el6.repo"
 
       $umd_repo = "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
       $install_umd_cmd = "yum install -y $umd_repo"

@@ -5,6 +5,7 @@ class argus::pdp (
   $pdp_port               = $argus::params::pdp_port,
   $pdp_conf_dir           = $argus::params::pdp_conf_dir,
   $pdp_conf               = $argus::params::pdp_conf,
+  $pdp_admin_host         = $argus::params::pdp_admin_host,
   $pdp_admin_password     = $argus::params::pdp_admin_password,
   $pdp_retention_interval = $argus::params::pdp_retention_interval,
   $pdp_enable_ssl         = $argus::params::pdp_enable_ssl,
@@ -30,18 +31,19 @@ class argus::pdp (
     pdp_port               => $pdp_port,
     pdp_conf_dir           => $pdp_conf_dir,
     pdp_conf               => $pdp_conf,
+    pdp_admin_host         => $pdp_admin_host,
     pdp_admin_password     => $pdp_admin_password,
     pdp_retention_interval => $pdp_retention_interval,
     pdp_enable_ssl         => $pdp_enable_ssl,
     pdp_env_file           => $pdp_env_file,
     pdp_jopts              => $pdp_jopts,
     pdp_start_jopts        => $pdp_start_jopts,
-	  pdp_home               => $pdp_home,
-	  pdp_logdir             => $pdp_logdir,
-	  pdp_libdir             => $pdp_libdir,
-	  pdp_endorseddir        => $pdp_endorseddir,
-	  pdp_provideddir        => $pdp_provideddir,
-	  pdp_pid                => $pdp_pid
+    pdp_home               => $pdp_home,
+		pdp_logdir             => $pdp_logdir,
+		pdp_libdir             => $pdp_libdir,
+		pdp_endorseddir        => $pdp_endorseddir,
+		pdp_provideddir        => $pdp_provideddir,
+		pdp_pid                => $pdp_pid
   }->
   class { 'argus::pdp::service': }
 

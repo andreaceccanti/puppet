@@ -38,22 +38,24 @@ class argus::params {
   $pdp_env_file = "/etc/sysconfig/argus-pdp"
   $pdp_conf_dir = "${conf_dir}/pdp"
   $pdp_conf = "${pdp_conf_dir}/pdp.ini"
+  $pdp_admin_host = 'localhost'
   $pdp_admin_password = 'pdpadmin_password'
   $pdp_retention_interval = "240"
   $pdp_enable_ssl = true
   $pdp_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
-	$pdp_start_jopts=""
-	$pdp_home="/usr/share/argus/pdp"
-	$pdp_logdir="/var/log/argus/pdp"
-	$pdp_libdir="/var/lib/argus/pdp/lib"
-	$pdp_endorseddir="/var/lib/argus/pdp/lib/endorsed"
-	$pdp_provideddir="/var/lib/argus/pdp/lib/provided"
-	$pdp_pid="/var/run/argus-pdp.pid"
+  $pdp_start_jopts=""
+  $pdp_home="/usr/share/argus/pdp"
+  $pdp_logdir="/var/log/argus/pdp"
+  $pdp_libdir="/var/lib/argus/pdp/lib"
+  $pdp_endorseddir="/var/lib/argus/pdp/lib/endorsed"
+  $pdp_provideddir="/var/lib/argus/pdp/lib/provided"
+  $pdp_pid="/var/run/argus-pdp.pid"
 
   # PEP
   $pep_env_file = "/etc/sysconfig/argus-pepd"
   $pep_conf_dir = "${conf_dir}/pepd"
   $pep_conf = "${pep_conf_dir}/pepd.ini"
+  $pep_admin_host = 'localhost'
   $pep_admin_password = 'pepdadmin_password'
 
   $pep_pips = "REQVALIDATOR_PIP OPENSSLSUBJECT_PIP GLITEXACMLPROFILE_PIP COMMONXACMLPROFILE_PIP"
@@ -63,12 +65,12 @@ class argus::params {
   $req_client_cert_auth = true
 
   $request_validator_pip_parser_class = "org.glite.authz.pep.pip.provider.RequestValidatorPIPIniConfigurationParser"
-	$request_validator_pip_validate_request_subjects = true
-	$request_validator_pip_validate_request_resources = true
-	$request_validator_pip_validate_request_action = true
-	$request_validator_pip_validate_request_environment = false
+  $request_validator_pip_validate_request_subjects = true
+  $request_validator_pip_validate_request_resources = true
+  $request_validator_pip_validate_request_action = true
+  $request_validator_pip_validate_request_environment = false
 
-	$openssl_pip_parser_class = "org.glite.authz.pep.pip.provider.OpenSSLSubjectPIPIniConfigurationParser"
+  $openssl_pip_parser_class = "org.glite.authz.pep.pip.provider.OpenSSLSubjectPIPIniConfigurationParser"
   $openssl_pip_subject_attribute_ids = "http://glite.org/xacml/attribute/subject-issuer urn:oasis:names:tc:xacml:1.0:subject:subject-id"
   $openssl_pip_subject_attribute_datatypes = "http://www.w3.org/2001/XMLSchema#string"
 
@@ -91,14 +93,14 @@ class argus::params {
   $prefer_dn_for_primary_group_name = true
   $no_primary_group_name_is_error = false
 
-	$pepd_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
-	$pepd_start_jopts=""
-	$pepd_home="/usr/share/argus/pepd"
-	$pepd_logdir="/var/log/argus/pepd"
-	$pepd_libdir="/var/lib/argus/pepd/lib"
-	$pepd_endorseddir="/var/lib/argus/pepd/lib/endorsed"
-	$pepd_provideddir="/var/lib/argus/pepd/lib/provided"
-	$pepd_pid="/var/run/argus-pepd.pid"
+  $pepd_jopts="-Xmx256M -Djdk.tls.trustNameService=true"
+  $pepd_start_jopts=""
+  $pepd_home="/usr/share/argus/pepd"
+  $pepd_logdir="/var/log/argus/pepd"
+  $pepd_libdir="/var/lib/argus/pepd/lib"
+  $pepd_endorseddir="/var/lib/argus/pepd/lib/endorsed"
+  $pepd_provideddir="/var/lib/argus/pepd/lib/provided"
+  $pepd_pid="/var/run/argus-pepd.pid"
 
   # BDII
   $bdii_conf_dir = "/etc/glite/info/service"

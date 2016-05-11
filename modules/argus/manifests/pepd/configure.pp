@@ -7,6 +7,7 @@ class argus::pepd::configure (
   $pep_port                                           = $argus::params::pep_host,
   $pep_conf_dir                                       = $argus::params::pep_conf_dir,
   $pep_conf                                           = $argus::params::pep_conf,
+  $pep_admin_host                                     = $argus::params::pep_admin_host,
   $pep_admin_password                                 = $argus::params::pep_admin_password,
   $pep_pips                                           = $argus::params::pep_pips,
   $pep_obligation_handlers                            = $argus::params::pep_obligation_handlers,
