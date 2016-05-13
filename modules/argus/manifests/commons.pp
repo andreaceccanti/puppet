@@ -46,6 +46,9 @@ class argus::commons inherits argus::params {
     'argus-repo':
       path   => $repo_file,
       ensure => file,
+      owner  => root,
+      group  => root,
+      mode   => '0644',
       source => $repo_file_source;
   }
 
