@@ -1,8 +1,7 @@
 class argus::bdii::install {
-
   package {
     'bdii':
-      ensure => installed;
+      ensure => latest;
 
     'glite-info-provider-service':
       ensure  => installed,

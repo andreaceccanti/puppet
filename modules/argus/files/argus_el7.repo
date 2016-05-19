@@ -4,3 +4,4 @@ baseurl=http://radiohead.cnaf.infn.it:9999/view/All/job/trigger-pkg.argus/BUILD_
 #baseurl=file:///tmp/local_repo/repository/el7/repo
 enabled=1
 gpgcheck=0
+priority=1

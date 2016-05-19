@@ -1,7 +1,6 @@
 class argus::pap::install {
-
   package { 'argus-pap':
-    ensure  => installed,
+    ensure  => latest,
     require => File['argus-repo']
   }
 }

@@ -1,7 +1,6 @@
 class argus::pdp::install {
-
   package { 'argus-pdp':
-    ensure  => installed,
+    ensure  => latest,
     require => File['argus-repo']
   }
 }
