@@ -1,8 +1,8 @@
 class argus::pdp::configure (
   $pap_host               = $argus::params::pap_host,
-  $pap_port               = $argus::params::pap_host,
+  $pap_port               = $argus::params::pap_port,
   $pdp_host               = $argus::params::pdp_host,
-  $pdp_port               = $argus::params::pdp_host,
+  $pdp_port               = $argus::params::pdp_port,
   $pdp_conf_dir           = $argus::params::pdp_conf_dir,
   $pdp_conf               = $argus::params::pdp_conf,
   $pdp_admin_host         = $argus::params::pdp_admin_host,
@@ -17,10 +17,7 @@ class argus::pdp::configure (
   $pdp_libdir             = $argus::params::pdp_libdir,
   $pdp_endorseddir        = $argus::params::pdp_endorseddir,
   $pdp_provideddir        = $argus::params::pdp_provideddir,
-  $pdp_pid                = $argus::params::pdp_pid
-
-) inherits argus::params {
-
+  $pdp_pid                = $argus::params::pdp_pid) inherits argus::params {
   require argus::commons
   require argus::pdp::install
 
