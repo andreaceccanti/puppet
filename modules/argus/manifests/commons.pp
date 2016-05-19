@@ -1,20 +1,20 @@
 class argus::commons inherits argus::params {
   case $lsbmajdistrelease {
     6       : {
-      $repo_file = "/etc/yum.repos.d/argus_el6.repo"
+      $repo_file        = "/etc/yum.repos.d/argus_el6.repo"
       $repo_file_source = "puppet:///modules/argus/argus_el6.repo"
 
-      $umd_repo = "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
-      $install_umd_cmd = "yum install -y $umd_repo"
-      $umd_repo_file = "/etc/yum.repos.d/UMD-3-base.repo"
+      $umd_repo         = "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
+      $install_umd_cmd  = "yum install -y $umd_repo"
+      $umd_repo_file    = "/etc/yum.repos.d/UMD-3-base.repo"
     }
     7       : {
-      $repo_file = "/etc/yum.repos.d/argus_el7.repo"
+      $repo_file        = "/etc/yum.repos.d/argus_el7.repo"
       $repo_file_source = "puppet:///modules/argus/argus_el7.repo"
 
-      $umd_repo = "http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm"
-      $install_umd_cmd = "yum install -y $umd_repo"
-      $umd_repo_file = "/etc/yum.repos.d/UMD-4-base.repo"
+      $umd_repo         = "http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm"
+      $install_umd_cmd  = "yum install -y $umd_repo"
+      $umd_repo_file    = "/etc/yum.repos.d/UMD-4-base.repo"
 
     }
     default : {
@@ -54,11 +54,14 @@ class argus::commons inherits argus::params {
 
   package {
     'wget':
-      ensure => present;
+      ensure => latest;
 
     'ca-policy-egi-core':
-      ensure  => present,
+      ensure  => latest,
       require => Exec['egi-repo'];
+
+    'epel-release':
+      ensure => latest;
   }
 
 }

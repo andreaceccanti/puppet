@@ -1,7 +1,8 @@
 class argus::bdii::install {
   package {
     'bdii':
-      ensure => latest;
+      ensure  => latest,
+      require => Package['epel-release'];
 
     'glite-info-provider-service':
       ensure  => installed,
