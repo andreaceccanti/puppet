@@ -1,4 +1,4 @@
-class argus::clients {
+class argus::clients inherits argus::commons {
   package {
     'argus-pap':
       ensure  => latest,
