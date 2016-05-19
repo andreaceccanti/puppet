@@ -10,4 +10,7 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 
-include argus::clients
+include puppet-infn-ca
+include puppet-test-ca
+
+include argus
