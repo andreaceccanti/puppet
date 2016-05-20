@@ -34,8 +34,12 @@ class argus::commons inherits argus::params {
     $argus::params::conf_dir:
       ensure => directory;
 
-    $argus::params::trust_info_dir:
+    $argus::params::grid_security_dir:
       ensure => directory;
+
+    $argus::params::trust_info_dir:
+      ensure  => directory,
+      require => File[$argus::params::grid_security_dir];
 
     'argus-repo':
       path   => $repo_file,
