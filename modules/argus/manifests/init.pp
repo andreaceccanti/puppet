@@ -3,4 +3,5 @@ class argus inherits commons {
   include argus::pdp
   include argus::pepd
   include argus::bdii
+  include argus::clients
 }

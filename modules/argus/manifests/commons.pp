@@ -25,15 +25,9 @@ class argus::commons inherits argus::params {
   Exec {
     path => "/bin:/sbin:/usr/bin:/usr/sbin" }
 
-  exec {
-    'egi-repo':
-      command => 'wget https://github.com/cnaf/ci-puppet-modules/raw/master/modules/puppet-egi-trust-anchors/files/egi-trust-anchors.repo -O /etc/yum.repos.d/egi-trust-anchors.repo',
-      onlyif  => "test ! -f /etc/yum.repos.d/egi-trust-anchors.repo",
-      require => Package['wget'];
-
-    'umd-repo':
-      command => $install_umd_cmd,
-      onlyif  => "test ! -f $umd_repo_file";
+  exec { 'umd-repo':
+    command => $install_umd_cmd,
+    onlyif  => "test ! -f $umd_repo_file";
   }
 
   file {
@@ -52,16 +46,6 @@ class argus::commons inherits argus::params {
       source => $repo_file_source;
   }
 
-  package {
-    'wget':
-      ensure => latest;
-
-    'ca-policy-egi-core':
-      ensure  => latest,
-      require => Exec['egi-repo'];
-
-    'epel-release':
-      ensure => latest;
-  }
+  package { 'epel-release': ensure => latest; }
 
 }

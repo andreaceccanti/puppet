@@ -1,11 +1,8 @@
 class argus::clients inherits argus::commons {
-  package {
-    'argus-pap':
-      ensure  => latest,
-      require => File['argus-repo'];
+  include argus::pap::install
 
-    'argus-pepcli':
-      ensure  => latest,
-      require => File['argus-repo'];
+  package { 'argus-pepcli':
+    ensure  => latest,
+    require => File['argus-repo'];
   }
 }

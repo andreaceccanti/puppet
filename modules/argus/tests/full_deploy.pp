@@ -10,4 +10,27 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 
+include puppet-infn-ca
+include puppet-test-ca
+include puppet-egi-trust-anchors
+
 include argus
+
+package {
+  'fetch-crl':
+    ensure => latest;
+
+  'ca-policy-egi-core':
+    ensure  => latest,
+    require => Class['puppet-egi-trust-anchors'];
+} ->
+service {
+  'fetch-crl-boot':
+    enable => true,
+    ensure => running;
+
+  'fetch-crl-cron':
+    enable => true,
+    ensure => running;
+}
+
