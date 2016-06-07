@@ -32,7 +32,7 @@ class argus::pap (
     pap_env_file   => $pap_env_file,
     pap_home       => $pap_home,
     pap_pid        => $pap_pid,
-    pap_java_opts  => $pap_java_opts
+    pap_java_opts  => $pap_java_opts,
   } ->
   class { 'argus::pap::service': }
 }

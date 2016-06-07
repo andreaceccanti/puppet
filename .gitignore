@@ -11,3 +11,5 @@
 argus-pep-server.spec
 /bin/
 **/pkg
+.sonar/
+sonar-project.properties

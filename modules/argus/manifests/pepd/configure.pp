@@ -54,46 +54,46 @@ class argus::pepd::configure (
 
   file {
     'pep_conf_dir':
-      path   => $pep_conf_dir,
-      ensure => directory;
+      ensure => directory,
+      path   => $pep_conf_dir;
 
     'pep_conf':
-      path    => $pep_conf,
       ensure  => file,
+      path    => $pep_conf,
       content => template('argus/pepd.ini.erb');
 
     'account_map_file':
-      path   => $account_map_file,
       ensure => file,
+      path   => $account_map_file,
       source => "puppet:///modules/argus/grid-mapfile";
 
     'group_map_file':
-      path   => $group_map_file,
       ensure => file,
+      path   => $group_map_file,
       source => "puppet:///modules/argus/groupmapfile";
 
     'gridmapdir':
-      path    => $grid_map_dir,
       ensure  => directory,
+      path    => $grid_map_dir,
       recurse => true,
       purge   => true,
       source  => "puppet:///modules/argus/gridmapdir";
 
     'vomsdir':
-      path    => $voms_dir,
       ensure  => directory,
+      path    => $voms_dir,
       recurse => true,
       purge   => true,
       source  => "puppet:///modules/argus/vomsdir";
 
     'voms_map_file':
-      path   => $voms_map_file,
       ensure => file,
+      path   => $voms_map_file,
       source => "puppet:///modules/argus/voms-grid-mapfile";
 
     'pepd_env_file':
-      path    => $pep_env_file,
       ensure  => file,
+      path    => $pep_env_file,
       content => template('argus/argus-pepd.erb');
   }
 
