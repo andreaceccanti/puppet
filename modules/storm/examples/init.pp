@@ -20,5 +20,5 @@ class { 'storm::storm_webdav':
     'tape',
     'testers.eu-emi.eu',
     'test.vo.bis',
-    'test.vo']
+    'test.vo'],
 }

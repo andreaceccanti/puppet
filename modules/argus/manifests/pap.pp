@@ -13,7 +13,7 @@ class argus::pap (
   $pap_env_file   = $argus::params::pap_env_file,
   $pap_home       = $argus::params::pap_home,
   $pap_pid        = $argus::params::pap_pid,
-  $pap_java_opts  = $argus::params::pap_java_opts) inherits argus::params {
+  $pap_java_opts  = $argus::params::pap_java_opts,) inherits argus::params {
   require argus::commons
 
   class { 'argus::pap::install': } ->

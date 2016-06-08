@@ -24,8 +24,8 @@ class hypervisor {
 
   file {
     'libvirtd':
-      path    => '/etc/sysconfig/libvirtd',
       ensure  => present,
+      path    => '/etc/sysconfig/libvirtd',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -34,8 +34,8 @@ class hypervisor {
       notify  => Service['libvirtd'];
 
     'libvirtd.conf':
-      path    => '/etc/libvirt/libvirtd.conf',
       ensure  => present,
+      path    => '/etc/libvirt/libvirtd.conf',
       owner   => root,
       group   => root,
       mode    => '0644',

@@ -1,7 +1,7 @@
 class postfix::local inherits postfix {
   file { 'main.cf':
-    path    => '/etc/postfix/main.cf',
     ensure  => present,
+    path    => '/etc/postfix/main.cf',
     require => Package['postfix'],
     owner   => root,
     group   => root,

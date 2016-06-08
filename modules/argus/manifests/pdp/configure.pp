@@ -17,24 +17,24 @@ class argus::pdp::configure (
   $pdp_libdir             = $argus::params::pdp_libdir,
   $pdp_endorseddir        = $argus::params::pdp_endorseddir,
   $pdp_provideddir        = $argus::params::pdp_provideddir,
-  $pdp_pid                = $argus::params::pdp_pid) inherits argus::params {
+  $pdp_pid                = $argus::params::pdp_pid,) inherits argus::params {
   require argus::commons
   require argus::pdp::install
 
   file {
     'pdp_conf_dir':
-      path   => $pdp_conf_dir,
-      ensure => directory;
+      ensure => directory,
+      path   => $pdp_conf_dir,;
 
     'pdp_conf':
-      path    => $pdp_conf,
       ensure  => file,
-      content => template('argus/pdp.ini.erb');
+      path    => $pdp_conf,
+      content => template('argus/pdp.ini.erb'),;
 
     'pdp_env_file':
-      path    => $pdp_env_file,
       ensure  => file,
-      content => template('argus/argus-pdp.erb');
+      path    => $pdp_env_file,
+      content => template('argus/argus-pdp.erb'),;
   }
 
   File['pdp_conf_dir'] -> File['pdp_conf']

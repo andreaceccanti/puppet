@@ -1,14 +1,18 @@
-class dovecot {
+class dovecot inherits dovecot::params {
   package { 'dovecot': ensure => installed }
 
   service { 'dovecot':
-    enable  => true,
     ensure  => running,
+    enable  => true,
     restart => '/etc/init.d/dovecot restart',
     require => Package['dovecot'],
   }
 
-  user { 'dovecot':
+  group { $dovecot::params::dovecot_group:
+    ensure => present,
+    gid    => 97,
+  } ->
+  user { $dovecot::params::dovecot_user:
     ensure  => present,
     uid     => 197,
     gid     => 'dovecot',
@@ -17,15 +21,10 @@ class dovecot {
     comment => 'Dovecot IMAP server',
   }
 
-  group { 'dovecot':
-    ensure => present,
-    gid    => 97,
-  }
-
   file {
     'dovecot.conf':
-      path    => '/etc/dovecot/dovecot.conf',
       ensure  => present,
+      path    => '/etc/dovecot/dovecot.conf',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -33,8 +32,8 @@ class dovecot {
       notify  => Service['dovecot'];
 
     '10-mail.conf':
-      path   => '/etc/dovecot/conf.d/10-mail.conf',
       ensure => present,
+      path   => '/etc/dovecot/conf.d/10-mail.conf',
       owner  => root,
       group  => root,
       mode   => '0644',
@@ -42,8 +41,8 @@ class dovecot {
       notify => Service['dovecot'];
 
     '10-ssl.conf':
-      path   => '/etc/dovecot/conf.d/10-ssl.conf',
       ensure => present,
+      path   => '/etc/dovecot/conf.d/10-ssl.conf',
       owner  => root,
       group  => root,
       mode   => '0644',
@@ -51,8 +50,8 @@ class dovecot {
       notify => Service['dovecot'];
 
     'dovecot-backup.cron':
-      path    => '/etc/cron.daily/dovecot-backup.cron',
       ensure  => present,
+      path    => '/etc/cron.daily/dovecot-backup.cron',
       owner   => root,
       group   => root,
       mode    => '0755',

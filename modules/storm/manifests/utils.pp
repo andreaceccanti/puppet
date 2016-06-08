@@ -1,6 +1,6 @@
 class storm::utils {
   define sa_storage_dir {
-    $_storm_user = $storm::params::user
+    $_storm_user   = $storm::params::user
     $_storage_root = $storm::params::storage_root
 
     File {
@@ -9,8 +9,8 @@ class storm::utils {
     }
 
     file { "${title}-storage-dir":
-      path    => "/${_storage_root}/${title}",
       ensure  => directory,
+      path    => "/${_storage_root}/${title}",
       require => File[$_storage_root];
     }
   }

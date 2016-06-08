@@ -15,7 +15,10 @@ class rsyslog::logserver inherits rsyslog::params {
 
   package { $rsyslog::params::json_module: ensure => installed }
 
-  $pkg_list = [$rsyslog::params::pkgname, $rsyslog::params::mongo_module, $rsyslog::params::json_module]
+  $pkg_list = [
+    $rsyslog::params::pkgname,
+    $rsyslog::params::mongo_module,
+    $rsyslog::params::json_module]
 
   service { 'httpd':
     ensure  => running,
@@ -41,9 +44,10 @@ class rsyslog::logserver inherits rsyslog::params {
       owner   => root,
       group   => root,
       mode    => '0644',
-      content => template("rsyslog/ommongodb.conf.erb"),
+      content => template('rsyslog/ommongodb.conf.erb'),
       notify  => Service[$rsyslog::params::service_name];
   }
 
-  Service[$mongodb::params::service] -> File[$rsyslog::params::repofile] -> Package[$pkg_list] -> Exec['rsyslog_downgrade']
+  Service[$mongodb::params::service] -> File[$rsyslog::params::repofile] -> Package[$pkg_list] -> 
+  Exec['rsyslog_downgrade']
 }

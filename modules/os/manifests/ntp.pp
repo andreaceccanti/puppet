@@ -7,21 +7,21 @@ class os::ntp {
 
   package { 'ntp': ensure => latest, }
 
-  file { "ntp.conf":
-    path    => "/etc/ntp.conf",
+  file { 'ntp.conf':
     ensure  => present,
+    path    => '/etc/ntp.conf',
     require => Package['ntp'],
     owner   => root,
     group   => root,
     mode    => '0644',
-    source  => "puppet:///modules/os/ntp.conf",
+    source  => 'puppet:///modules/os/ntp.conf',
   }
 
   service { 'ntpd':
-    name      => $ntp_service,
     ensure    => running,
+    name      => $ntp_service,
     enable    => true,
-    restart   => "service ntpd restart",
+    restart   => 'service ntpd restart',
     subscribe => File['ntp.conf'],
     require   => [Package['ntp'], File['ntp.conf']];
   }

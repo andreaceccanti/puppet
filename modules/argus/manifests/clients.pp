@@ -3,6 +3,6 @@ class argus::clients inherits argus::commons {
 
   package { 'argus-pepcli':
     ensure  => latest,
-    require => File['argus-repo'];
+    require => File['argus-repo'],
   }
 }

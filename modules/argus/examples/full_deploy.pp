@@ -18,6 +18,6 @@ include haveged
 include argus
 
 class { 'fetchcrl':
-  require => Class['puppet-egi-trust-anchors'];
+  require => Class['puppet-egi-trust-anchors'],;
 }
 

@@ -4,7 +4,13 @@ class ldapauth {
   }
 
   if $::operatingsystem =~ /Debian|Ubuntu/ {
-    $pkg_list = ['libpam-ldap', 'libpam-krb5', 'nscd', 'nslcd', 'auth-client-config', 'libnss-ldapd']
+    $pkg_list = [
+      'libpam-ldap',
+      'libpam-krb5',
+      'nscd',
+      'nslcd',
+      'auth-client-config',
+      'libnss-ldapd']
   }
 
   package { $pkg_list: ensure => latest }
@@ -26,8 +32,8 @@ class ldapauth {
 
   file {
     'nsswitch.conf':
-      path    => '/etc/nsswitch.conf',
       ensure  => present,
+      path    => '/etc/nsswitch.conf',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -35,8 +41,8 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'pam_ldap.conf':
-      path    => '/etc/pam_ldap.conf',
       ensure  => present,
+      path    => '/etc/pam_ldap.conf',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -44,8 +50,8 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'krb5.conf':
-      path    => '/etc/krb5.conf',
       ensure  => present,
+      path    => '/etc/krb5.conf',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -53,8 +59,8 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'system-auth-ac':
-      path    => '/etc/pam.d/system-auth-ac',
       ensure  => present,
+      path    => '/etc/pam.d/system-auth-ac',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -62,17 +68,17 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'sshd':
-      path    => '/etc/pam.d/sshd',
       ensure  => present,
+      path    => '/etc/pam.d/sshd',
       owner   => root,
       group   => root,
       mode    => '0644',
-      content => template("ldapauth/sshd_$osfamily.erb"),
+      content => template("ldapauth/sshd_${osfamily}.erb"),
       notify  => [Service['nslcd'], Service['nscd']];
 
     'password-auth-ac':
-      path    => '/etc/pam.d/password-auth-ac',
       ensure  => present,
+      path    => '/etc/pam.d/password-auth-ac',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -80,8 +86,8 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'fingerprint-auth-ac':
-      path    => '/etc/pam.d/fingerprint-auth-ac',
       ensure  => present,
+      path    => '/etc/pam.d/fingerprint-auth-ac',
       owner   => root,
       group   => root,
       mode    => '0644',
@@ -89,8 +95,8 @@ class ldapauth {
       notify  => [Service['nslcd'], Service['nscd']];
 
     'smartcard-auth-ac':
-      path    => '/etc/pam.d/smartcard-auth-ac',
       ensure  => present,
+      path    => '/etc/pam.d/smartcard-auth-ac',
       owner   => root,
       group   => root,
       mode    => '0644',

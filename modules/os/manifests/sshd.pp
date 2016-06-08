@@ -17,12 +17,12 @@ class os::sshd {
   }
 
   file { 'sshd_config':
-    path    => '/etc/sshd_config',
     ensure  => present,
+    path    => '/etc/sshd_config',
     owner   => root,
     group   => root,
     mode    => '0600',
-    content => template("os/sshd_config.erb"),
+    content => template('os/sshd_config.erb'),
     notify  => Service['sshd'];
   }
 }

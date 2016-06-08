@@ -1,4 +1,4 @@
-class argus inherits commons {
+class argus {
   include argus::pap
   include argus::pdp
   include argus::pepd

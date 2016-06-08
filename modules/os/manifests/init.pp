@@ -14,17 +14,17 @@ class os {
   }
 
   file { 'backup':
+    ensure => directory,
     path   => '/mnt/backup',
-    ensure => directory;
   }
 
   mount { '/mnt/backup':
+    ensure   => mounted,
     device   => 'rd-storage:/mnt/tank/backup',
     fstype   => 'nfs',
     options  => 'defaults',
     remounts => false,
     atboot   => true,
-    ensure   => mounted,
   }
 
   File['backup'] -> Mount['/mnt/backup']

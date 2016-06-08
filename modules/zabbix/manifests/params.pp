@@ -1,18 +1,18 @@
 class zabbix::params {
-  $pkg_agent = 'zabbix-agent'
-  $pkg_server = 'zabbix-server'
+  $pkg_agent             = 'zabbix-agent'
+  $pkg_server            = 'zabbix-server'
 
-  $agent_srv = 'zabbix-agent'
-  $server_srv = 'zabbix-server'
+  $agent_srv             = 'zabbix-agent'
+  $server_srv            = 'zabbix-server'
 
-  $zabbix_config_dir = '/etc/zabbix'
-  $zabbix_user_home_dir = '/var/lib/zabbix'
-  $zabbix_log_dir = '/var/log/zabbix'
-  $zabbix_pid_dir = '/var/run/zabbix'
+  $zabbix_config_dir     = '/etc/zabbix'
+  $zabbix_user_home_dir  = '/var/lib/zabbix'
+  $zabbix_log_dir        = '/var/log/zabbix'
+  $zabbix_pid_dir        = '/var/run/zabbix'
   $zabbix_user_param_dir = '/etc/zabbix/zabbix_agentd.d'
 
-  $zabbix_user = 'zabbix'
-  $zabbix_group = 'zabbix'
+  $zabbix_user           = 'zabbix'
+  $zabbix_group          = 'zabbix'
 
   case $::osfamily {
     'RedHat' : {
@@ -20,16 +20,16 @@ class zabbix::params {
 
       case $::operatingsystem {
         'CentOS', 'Scientific' : {
-          $repofile = "/etc/yum.repos.d/zabbix.repo"
-          $install_repo_command = "yum install -y $repo"
-          $restart_command = '/etc/init.d/zabbix-agent restart'
-          $agent_conf_file = '/etc/zabbix/zabbix_agentd.conf'
+          $repofile             = '/etc/yum.repos.d/zabbix.repo'
+          $install_repo_command = "yum install -y ${repo}"
+          $restart_command      = '/etc/init.d/zabbix-agent restart'
+          $agent_conf_file      = '/etc/zabbix/zabbix_agentd.conf'
         }
         'Fedora'               : {
-          $repofile = "/etc/yum.repos.d/fedora.repo"
-          $install_repo_command = "echo"
-          $restart_command = 'systemctl restart zabbix-agent'
-          $agent_conf_file = '/etc/zabbix_agentd.conf'
+          $repofile             = '/etc/yum.repos.d/fedora.repo'
+          $install_repo_command = 'echo'
+          $restart_command      = 'systemctl restart zabbix-agent'
+          $agent_conf_file      = '/etc/zabbix_agentd.conf'
         }
       }
 
@@ -46,15 +46,15 @@ class zabbix::params {
         'Debian' : {
           case $::lsbdistcodename {
             'jessie'  : {
-              $repo = ''
+              $repo     = ''
               $repofile = '/etc/apt/sources.list'
             }
             'wheezy'  : {
-              $repo = 'http://repo.zabbix.com/zabbix/2.0/debian/pool/main/z/zabbix-release/zabbix-release_2.0-1wheezy_all.deb'
+              $repo     = 'http://repo.zabbix.com/zabbix/2.0/debian/pool/main/z/zabbix-release/zabbix-release_2.0-1wheezy_all.deb'
               $repofile = '/etc/apt/sources.list.d/zabbix.list'
             }
             'squeeze' : {
-              $repo = 'http://repo.zabbix.com/zabbix/2.0/debian/pool/main/z/zabbix-release/zabbix-release_2.0-1squeeze_all.deb'
+              $repo     = 'http://repo.zabbix.com/zabbix/2.0/debian/pool/main/z/zabbix-release/zabbix-release_2.0-1squeeze_all.deb'
               $repofile = '/etc/apt/sources.list.d/zabbix.list'
 
             }
@@ -64,9 +64,9 @@ class zabbix::params {
 
         }
       }
-      $install_repo_command = "dpkg -i $repo"
-      $restart_command = '/etc/init.d/zabbix-agent restart'
-      $agent_conf_file = '/etc/zabbix/zabbix_agentd.conf'
+      $install_repo_command = "dpkg -i ${repo}"
+      $restart_command      = '/etc/init.d/zabbix-agent restart'
+      $agent_conf_file      = '/etc/zabbix/zabbix_agentd.conf'
     }
   }
 

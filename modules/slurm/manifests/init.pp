@@ -19,7 +19,6 @@ class slurm inherits slurm::params {
   user { $slurm::params::slurm_user:
     ensure     => present,
     home       => '/home/slurm',
-    password   => '!!',
     shell      => '/bin/false',
     uid        => $slurm::params::slurm_uid,
     gid        => $slurm::params::slurm_gid,
@@ -38,7 +37,7 @@ class slurm inherits slurm::params {
       ensure  => directory,
       owner   => $slurm::params::slurm_user,
       group   => $slurm::params::slurm_group,
-      mode    => '755',
+      mode    => '0755',
       require => User[$slurm::params::slurm_user];
 
     $slurm::params::conf_file:
@@ -50,18 +49,18 @@ class slurm inherits slurm::params {
       ensure  => directory,
       owner   => $slurm::params::slurm_user,
       group   => $slurm::params::slurm_group,
-      mode    => '755',
+      mode    => '0755',
       require => User[$slurm::params::slurm_user];
 
     $slurm::params::spool_dir:
       ensure => directory,
       owner  => $slurm::params::slurm_user,
       group  => $slurm::params::slurm_group,
-      mode   => '755';
+      mode   => '0755';
 
     'munge.key':
-      path    => '/etc/munge/munge.key',
       ensure  => present,
+      path    => '/etc/munge/munge.key',
       owner   => 'munge',
       group   => 'munge',
       mode    => '0400',
@@ -76,18 +75,18 @@ class slurm inherits slurm::params {
           ensure  => directory,
           owner   => $slurm::params::slurm_user,
           group   => $slurm::params::slurm_group,
-          mode    => '755',
+          mode    => '0755',
           require => User[$slurm::params::slurm_user];
 
         $slurm::params::init_script:
           ensure  => present,
-          mode    => '755',
+          mode    => '0755',
           content => template('slurm/slurm.erb'),
           require => File[$slurm::params::profile_script];
 
         $slurm::params::profile_script:
           ensure  => present,
-          mode    => '755',
+          mode    => '0755',
           content => template('slurm/slurm.sh.erb');
 
         '/etc/slurm':
@@ -97,12 +96,12 @@ class slurm inherits slurm::params {
       }
 
       mount { $slurm::params::share_dir:
+        ensure   => mounted,
         device   => 'rd-storage:/mnt/tank/slurm',
         fstype   => 'nfs',
         options  => 'defaults',
         remounts => false,
         atboot   => true,
-        ensure   => mounted,
         require  => File[$slurm::params::share_dir],
       }
 
@@ -113,6 +112,7 @@ class slurm inherits slurm::params {
 
   }
 
-  Service['munge'] -> Group[$slurm::params::slurm_group] -> User[$slurm::params::slurm_user] -> File[$slurm::params::conf_file] ->
+  Service['munge'] -> Group[$slurm::params::slurm_group] -> User[$slurm::params::slurm_user] -> File
+  [$slurm::params::conf_file] ->
   Service[$slurm::params::service_name]
 }

@@ -1,9 +1,9 @@
 class os::sudo {
-	package { 'sudo'	: ensure => latest }
+  package { 'sudo': ensure => latest }
 
-    file { "/etc/sudoers":
-        owner => 'root',
-        group => 'root',
-        mode  => '0440',
-    }
+  file { '/etc/sudoers':
+    owner => 'root',
+    group => 'root',
+    mode  => '0440',
+  }
 }
