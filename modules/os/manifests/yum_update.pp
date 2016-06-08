@@ -1,5 +1,5 @@
 class os::yum_update {
-  package { 'yum-cron': ensure => latest }
+  package { 'yum-cron': ensure => latest, }
 
   service { 'yum-cron':
     ensure  => running,

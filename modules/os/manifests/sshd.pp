@@ -23,6 +23,6 @@ class os::sshd {
     group   => root,
     mode    => '0600',
     content => template('os/sshd_config.erb'),
-    notify  => Service['sshd'];
+    notify  => Service['sshd'],
   }
 }

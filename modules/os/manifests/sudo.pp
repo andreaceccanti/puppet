@@ -1,5 +1,5 @@
 class os::sudo {
-  package { 'sudo': ensure => latest }
+  package { 'sudo': ensure => latest, }
 
   file { '/etc/sudoers':
     owner => 'root',

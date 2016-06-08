@@ -14,9 +14,12 @@ class os::iscsi {
       $initiator_service_d = 'open-iscsi'
       $lib_dir             = '/var/lib/open-iscsi'
     }
+    default  : {
+      fail('Unsupported OS')
+    }
   }
 
-  package { $initiator_pkg: ensure => 'latest' }
+  package { $initiator_pkg: ensure => latest, }
 
   service { $initiator_service_d:
     ensure => running,
@@ -32,9 +35,8 @@ class os::iscsi {
   exec { 'iscsi_discovery':
     command => "iscsiadm -m discovery -t st -p ${target}",
     creates => "${lib_dir}/send_targets/${target},3260/st_config",
-    returns => [0, 21]
+    returns => [0, 21],
   }
 
-  Package[$initiator_pkg] -> File[$initiator_name_file] -> Exec['iscsi_discovery'] -> Service[
-    $initiator_service_d]
+  Package[$initiator_pkg] -> File[$initiator_name_file] -> Exec['iscsi_discovery'] -> Service[$initiator_service_d]
 }

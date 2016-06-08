@@ -14,18 +14,13 @@ class argus::pepd::configure (
   $pep_enable_ssl           = $argus::params::pep_enable_ssl,
   $req_client_cert_auth     = $argus::params::req_client_cert_auth,
   $request_validator_pip_parser_class      = $argus::params::request_validator_pip_parser_class,
-  $request_validator_pip_validate_request_subjects    = 
-  $argus::params::request_validator_pip_validate_request_subjects,
-  $request_validator_pip_validate_request_resources   = 
-  $argus::params::request_validator_pip_validate_request_resources,
-  $request_validator_pip_validate_request_action      = 
-  $argus::params::request_validator_pip_validate_request_action,
-  $request_validator_pip_validate_request_environment = 
-  $argus::params::request_validator_pip_validate_request_environment,
+  $request_validator_pip_validate_request_subjects    = $argus::params::request_validator_pip_validate_request_subjects,
+  $request_validator_pip_validate_request_resources   = $argus::params::request_validator_pip_validate_request_resources,
+  $request_validator_pip_validate_request_action      = $argus::params::request_validator_pip_validate_request_action,
+  $request_validator_pip_validate_request_environment = $argus::params::request_validator_pip_validate_request_environment,
   $openssl_pip_parser_class = $argus::params::openssl_pip_parser_class,
   $openssl_pip_subject_attribute_ids       = $argus::params::openssl_pip_subject_attribute_ids,
-  $openssl_pip_subject_attribute_datatypes = 
-  $argus::params::openssl_pip_subject_attribute_datatypes,
+  $openssl_pip_subject_attribute_datatypes = $argus::params::openssl_pip_subject_attribute_datatypes,
   $glite_xacml_pip_parser_class            = $argus::params::glite_xacml_pip_parser_class,
   $glite_xacml_pip_accepted_profile_ids    = $argus::params::glite_xacml_pip_accepted_profile_ids,
   $common_xacml_pip_parser_class           = $argus::params::common_xacml_pip_parser_class,
@@ -48,8 +43,7 @@ class argus::pepd::configure (
   $use_secondary_group_names_for_mapping   = $argus::params::use_secondary_group_names_for_mapping,
   $prefer_dn_for_login_name = $argus::params::prefer_dn_for_login_name,
   $prefer_dn_for_primary_group_name        = $argus::params::prefer_dn_for_primary_group_name,
-  $no_primary_group_name_is_error          = $argus::params::no_primary_group_name_is_error,) 
-inherits argus::params {
+  $no_primary_group_name_is_error          = $argus::params::no_primary_group_name_is_error,) inherits argus::params {
   require argus::commons
   require argus::pepd::install
 

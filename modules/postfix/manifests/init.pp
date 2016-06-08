@@ -2,16 +2,16 @@ class postfix {
   $pkg_list = $::operatingsystem ? {
     /RedHat|CentOS|Scientific|Fedora/ => ['postfix', 'mailx'],
     /Ubuntu|Debian/ => ['postfix', 'bsd-mailx'],
-    default         => ''
+    default         => '',
   }
 
-  package { $pkg_list: ensure => latest }
+  package { $pkg_list: ensure => latest, }
 
   $restart_cmd = $::operatingsystem ? {
     /Fedora/        => 'systemctl restart postfix',
     /RedHat|CentOS|Scientific|Ubuntu/ => '/etc/init.d/postfix restart',
     /Debian|Ubuntu/ => '/etc/init.d/postfix restart',
-    default         => ''
+    default         => '',
   }
 
   service { 'postfix':

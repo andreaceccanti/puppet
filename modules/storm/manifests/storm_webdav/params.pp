@@ -31,7 +31,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/dteam',
       vos            => 'dteam',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'igi'               => {
@@ -39,7 +39,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/igi',
       vos            => 'test.vo',
       auth_read      => true,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'nested'            => {
@@ -47,7 +47,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/testers.eu-emi.eu/nested,/alias',
       vos            => 'testers.eu-emi.eu',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'noauth'            => {
@@ -55,7 +55,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/noauth',
       vos            => 'test.vo',
       auth_read      => true,
-      anonymous_read => true
+      anonymous_read => true,
     }
     ,
     'tape'              => {
@@ -63,7 +63,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/tape',
       vos            => 'testers.eu-emi.eu',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'testers.eu-emi.eu' => {
@@ -71,7 +71,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/testers.eu-emi.eu',
       vos            => 'testers.eu-emi.eu',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'test.vo.bis'       => {
@@ -79,7 +79,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/test.vo.bis',
       vos            => 'testers.eu-emi.eu',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
     'test.vo'           => {
@@ -87,7 +87,7 @@ class storm::storm_webdav::params inherits storm::params {
       access_points  => '/test.vo',
       vos            => 'test.vo',
       auth_read      => false,
-      anonymous_read => false
+      anonymous_read => false,
     }
     ,
   }

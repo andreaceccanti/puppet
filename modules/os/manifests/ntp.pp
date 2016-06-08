@@ -2,7 +2,7 @@ class os::ntp {
   $ntp_service = $::osfamily ? {
     /RedHat/ => 'ntpd',
     /Debian/ => 'ntp',
-    default  => ''
+    default  => '',
   }
 
   package { 'ntp': ensure => latest, }
@@ -23,7 +23,7 @@ class os::ntp {
     enable    => true,
     restart   => 'service ntpd restart',
     subscribe => File['ntp.conf'],
-    require   => [Package['ntp'], File['ntp.conf']];
+    require   => [Package['ntp'], File['ntp.conf']],
   }
 
   Package['ntp'] -> File['ntp.conf'] -> Service['ntpd']

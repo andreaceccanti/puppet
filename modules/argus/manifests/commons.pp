@@ -27,7 +27,7 @@ class argus::commons inherits argus::params {
 
   exec { 'umd-repo':
     command => $install_umd_cmd,
-    onlyif  => "test ! -f ${umd_repo_file}";
+    onlyif  => "test ! -f ${umd_repo_file}",;
   }
 
   file {

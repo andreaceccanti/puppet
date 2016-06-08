@@ -4,30 +4,24 @@ class ldapauth {
   }
 
   if $::operatingsystem =~ /Debian|Ubuntu/ {
-    $pkg_list = [
-      'libpam-ldap',
-      'libpam-krb5',
-      'nscd',
-      'nslcd',
-      'auth-client-config',
-      'libnss-ldapd']
+    $pkg_list = ['libpam-ldap', 'libpam-krb5', 'nscd', 'nslcd', 'auth-client-config', 'libnss-ldapd']
   }
 
-  package { $pkg_list: ensure => latest }
+  package { $pkg_list: ensure => latest, }
 
   service {
     'nslcd':
       ensure    => running,
       enable    => true,
       hasstatus => true,
-      restart   => '/etc/init.d/nslcd restart';
+      restart   => '/etc/init.d/nslcd restart',;
 
     'nscd':
       ensure    => running,
       enable    => true,
       hasstatus => true,
       restart   => '/etc/init.d/nscd restart',
-      require   => Package['nscd'];
+      require   => Package['nscd'],;
   }
 
   file {
@@ -38,7 +32,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/nsswitch.conf.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'pam_ldap.conf':
       ensure  => present,
@@ -47,7 +41,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/pam_ldap.conf.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'krb5.conf':
       ensure  => present,
@@ -56,7 +50,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/krb5.conf.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'system-auth-ac':
       ensure  => present,
@@ -65,7 +59,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/system-auth-ac.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'sshd':
       ensure  => present,
@@ -74,7 +68,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template("ldapauth/sshd_${osfamily}.erb"),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'password-auth-ac':
       ensure  => present,
@@ -83,7 +77,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/password-auth-ac.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'fingerprint-auth-ac':
       ensure  => present,
@@ -92,7 +86,7 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/fingerprint-auth-ac.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
 
     'smartcard-auth-ac':
       ensure  => present,
@@ -101,6 +95,6 @@ class ldapauth {
       group   => root,
       mode    => '0644',
       content => template('ldapauth/smartcard-auth-ac.erb'),
-      notify  => [Service['nslcd'], Service['nscd']];
+      notify  => [Service['nslcd'], Service['nscd']],;
   }
 }

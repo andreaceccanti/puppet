@@ -11,7 +11,8 @@ class storm::utils {
     file { "${title}-storage-dir":
       ensure  => directory,
       path    => "/${_storage_root}/${title}",
-      require => File[$_storage_root];
+      require => File[$_storage_root],
     }
   }
 }
+

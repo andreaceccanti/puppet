@@ -1,24 +1,13 @@
 class rsyslog::logserver inherits rsyslog::params {
   include mongodb
 
-  package { 'httpd': ensure => installed }
+  package { ['httpd', 'php', 'php-gd', 'php-pecl-mongo', 'php-bcmath']: ensure => installed, }
 
-  package { 'php': ensure => installed }
+  package { $rsyslog::params::mongo_module: ensure => installed, }
 
-  package { 'php-gd': ensure => installed }
+  package { $rsyslog::params::json_module: ensure => installed, }
 
-  package { 'php-pecl-mongo': ensure => installed }
-
-  package { 'php-bcmath': ensure => installed }
-
-  package { $rsyslog::params::mongo_module: ensure => installed }
-
-  package { $rsyslog::params::json_module: ensure => installed }
-
-  $pkg_list = [
-    $rsyslog::params::pkgname,
-    $rsyslog::params::mongo_module,
-    $rsyslog::params::json_module]
+  $pkg_list = [$rsyslog::params::pkgname, $rsyslog::params::mongo_module, $rsyslog::params::json_module]
 
   service { 'httpd':
     ensure  => running,
@@ -28,7 +17,7 @@ class rsyslog::logserver inherits rsyslog::params {
 
   exec { 'rsyslog_downgrade':
     command => $rsyslog::params::downgrade_command,
-    onlyif  => $rsyslog::params::downgrade_test
+    onlyif  => $rsyslog::params::downgrade_test,
   }
 
   file {
@@ -37,7 +26,7 @@ class rsyslog::logserver inherits rsyslog::params {
       owner   => root,
       group   => root,
       mode    => '0644',
-      content => template($rsyslog::params::repotmpl);
+      content => template($rsyslog::params::repotmpl),;
 
     $rsyslog::params::module_conf:
       ensure  => present,
@@ -45,9 +34,9 @@ class rsyslog::logserver inherits rsyslog::params {
       group   => root,
       mode    => '0644',
       content => template('rsyslog/ommongodb.conf.erb'),
-      notify  => Service[$rsyslog::params::service_name];
+      notify  => Service[$rsyslog::params::service_name],;
   }
 
-  Service[$mongodb::params::service] -> File[$rsyslog::params::repofile] -> Package[$pkg_list] -> 
+  Service[$mongodb::params::service] -> File[$rsyslog::params::repofile] -> Package[$pkg_list] ->
   Exec['rsyslog_downgrade']
 }

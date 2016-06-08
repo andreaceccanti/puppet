@@ -31,6 +31,9 @@ class zabbix::params {
           $restart_command      = 'systemctl restart zabbix-agent'
           $agent_conf_file      = '/etc/zabbix_agentd.conf'
         }
+        default                : {
+          fail('Unsupported OS')
+        }
       }
 
     }
@@ -56,12 +59,14 @@ class zabbix::params {
             'squeeze' : {
               $repo     = 'http://repo.zabbix.com/zabbix/2.0/debian/pool/main/z/zabbix-release/zabbix-release_2.0-1squeeze_all.deb'
               $repofile = '/etc/apt/sources.list.d/zabbix.list'
-
+            }
+            default   : {
+              fail('Unsupported release')
             }
           }
         }
         default  : {
-
+          fail('Unsupported release')
         }
       }
       $install_repo_command = "dpkg -i ${repo}"

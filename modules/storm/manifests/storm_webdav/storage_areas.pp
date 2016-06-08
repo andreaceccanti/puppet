@@ -12,7 +12,7 @@ class storm::storm_webdav::storage_areas {
       ensure  => file,
       path    => "/${_sa_conf_dir}/${title}.properties",
       notify  => Service['storm-webdav'],
-      content => template('storm/sa.properties.erb');
+      content => template('storm/sa.properties.erb'),
     }
   }
 

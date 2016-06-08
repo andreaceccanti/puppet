@@ -10,13 +10,13 @@ class lsf inherits lsf::params {
     uid      => 500,
     gid      => 500,
     provider => useradd,
-    comment  => 'LSF admin user'
+    comment  => 'LSF admin user',
   } ->
   file {
     'lsf.sh':
       ensure => present,
       path   => '/etc/profile.d/lsf.sh',
-      source => 'puppet:///modules/lsf/lsf.sh';
+      source => 'puppet:///modules/lsf/lsf.sh',;
 
     '/usr/share/lsf':
       ensure => directory,

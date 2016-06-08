@@ -18,6 +18,9 @@ class slurm::params {
 
       $conf_dir     = '/etc/slurm-llnl'
     }
+    default  : {
+      fail('Unsupported OS')
+    }
   }
 
   $slurm_user     = 'slurm'

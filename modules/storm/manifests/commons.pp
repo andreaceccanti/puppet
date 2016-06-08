@@ -1,28 +1,11 @@
-# == Class: commons
-#
-# Module to configure StoRM common utilities.
-#
-# === Authors
-#
-# Marco Caberletti <marco.caberletti@cnaf.infn.it>
-#
 class storm::commons {
   require puppet-emi3-release
 
-  $_storm_user = $storm::params::user
-  $_storm_group = $storm::params::group
+  $_storm_user   = $storm::params::user
+  $_storm_group  = $storm::params::group
   $_storage_root = $storm::params::storage_root
 
-  package {
-    'fetch-crl':
-      ensure => installed;
-
-    'attr':
-      ensure => installed;
-
-    'acl':
-      ensure => installed;
-  }
+  package { ['fetch-crl', 'attr', 'acl']: ensure => installed, }
 
   user { $_storm_user:
     ensure  => present,

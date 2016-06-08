@@ -1,25 +1,11 @@
 class hypervisor {
-  package { 'bridge-utils': ensure => latest }
-
-  package { 'ebtables': ensure => latest }
-
-  package { 'libvirt': ensure => latest }
-
-  package { 'nmap': ensure => latest }
-
-  package { 'qemu-img': ensure => latest }
-
-  package { 'qemu-kvm': ensure => latest }
-
-  package { 'qemu-kvm-tools': ensure => latest }
-
-  package { 'tcpdump': ensure => latest }
+  package { ['bridge-utils', 'ebtables', 'libvirt', 'nmap', 'qemu-img', 'qemu-kvm', 'qemu-kvm-tools', 'tcpdump']: ensure => latest, }
 
   service { 'libvirtd':
     ensure  => running,
     enable  => true,
     restart => '/etc/init.d/libvirtd restart',
-    require => Package['libvirt'];
+    require => Package['libvirt'],
   }
 
   file {
@@ -31,7 +17,7 @@ class hypervisor {
       mode    => '0644',
       require => Package['libvirt'],
       content => template('hypervisor/libvirtd.erb'),
-      notify  => Service['libvirtd'];
+      notify  => Service['libvirtd'],;
 
     'libvirtd.conf':
       ensure  => present,
@@ -41,6 +27,6 @@ class hypervisor {
       mode    => '0644',
       require => Package['libvirt'],
       content => template('hypervisor/libvirtd.conf.erb'),
-      notify  => Service['libvirtd'];
+      notify  => Service['libvirtd'],;
   }
 }

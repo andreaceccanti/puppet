@@ -1,5 +1,5 @@
 class dovecot inherits dovecot::params {
-  package { 'dovecot': ensure => installed }
+  package { 'dovecot': ensure => installed, }
 
   service { 'dovecot':
     ensure  => running,
@@ -29,7 +29,7 @@ class dovecot inherits dovecot::params {
       group   => root,
       mode    => '0644',
       content => template('dovecot/dovecot.conf.erb'),
-      notify  => Service['dovecot'];
+      notify  => Service['dovecot'],;
 
     '10-mail.conf':
       ensure => present,
@@ -38,7 +38,7 @@ class dovecot inherits dovecot::params {
       group  => root,
       mode   => '0644',
       source => 'puppet:///modules/dovecot/10-mail.conf',
-      notify => Service['dovecot'];
+      notify => Service['dovecot'],;
 
     '10-ssl.conf':
       ensure => present,
@@ -47,7 +47,7 @@ class dovecot inherits dovecot::params {
       group  => root,
       mode   => '0644',
       source => 'puppet:///modules/dovecot/10-ssl.conf',
-      notify => Service['dovecot'];
+      notify => Service['dovecot'],;
 
     'dovecot-backup.cron':
       ensure  => present,
@@ -55,6 +55,6 @@ class dovecot inherits dovecot::params {
       owner   => root,
       group   => root,
       mode    => '0755',
-      content => template('dovecot/dovecot-backup.cron.erb');
+      content => template('dovecot/dovecot-backup.cron.erb'),;
   }
 }

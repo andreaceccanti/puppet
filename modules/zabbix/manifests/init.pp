@@ -3,7 +3,7 @@ class zabbix inherits zabbix::params {
     command => $zabbix::params::install_repo_command,
     onlyif  => "test ! -f ${zabbix::params::repofile}",
   } ->
-  group { $zabbix::params::zabbix_group: ensure => 'present', } ->
+  group { $zabbix::params::zabbix_group: ensure => present, } ->
   user { $zabbix::params::zabbix_user:
     ensure     => 'present',
     home       => $zabbix::params::zabbix_user_home_dir,
@@ -11,7 +11,6 @@ class zabbix inherits zabbix::params {
     gid        => 'zabbix',
     managehome => true,
     comment    => 'Zabbix Monitoring System',
-    require    => Group['zabbix'],
   } ->
   file {
     $zabbix::params::zabbix_config_dir:

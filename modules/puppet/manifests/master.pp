@@ -1,7 +1,5 @@
 class puppet::master inherits puppet {
-  package { 'puppet-server': ensure => installed }
-
-  package { 'httpd': ensure => installed }
+  package { ['puppet-server', 'httpd']: ensure => installed, }
 
   service { 'puppetmaster':
     ensure => stopped,

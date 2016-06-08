@@ -21,14 +21,14 @@ class puppet {
         18      => 'https://yum.puppetlabs.com/fedora/f18/products/x86_64/puppetlabs-release-18-7.noarch.rpm',
         19      => 'https://yum.puppetlabs.com/fedora/f19/products/x86_64/puppetlabs-release-19-2.noarch.rpm',
         20      => '',
-        default => ''
+        default => '',
       }
 
       $repofile  = $::operatingsystemrelease ? {
         18      => '/etc/yum.repos.d/puppetlabs.repo',
         19      => '/etc/yum.repos.d/puppetlabs.repo',
         20      => '/etc/yum.repos.d/fedora.repo',
-        default => ''
+        default => '',
       }
       $provider  = 'systemd'
       $agentname = 'puppetagent'
@@ -59,5 +59,5 @@ class puppet {
     onlyif  => $condition,
   }
 
-  package { 'ruby': ensure => latest; }
+  package { 'ruby': ensure => latest, }
 }
