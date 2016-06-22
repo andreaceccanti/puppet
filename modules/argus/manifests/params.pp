@@ -7,7 +7,7 @@ class argus::params {
     default => fail('Unsupported OS'),
   }
 
-  $rpm_base_url             = pick($::base_url, $ci_base_url)
+  $rpm_base_url             = pick($::argus_repo_base_url, $ci_base_url)
 
   $certificate_path         = '/etc/grid-security/hostcert.pem '
   $private_key_path         = '/etc/grid-security/hostkey.pem '
