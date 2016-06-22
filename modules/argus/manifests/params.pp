@@ -1,6 +1,13 @@
 class argus::params {
   # common
   $conf_dir                 = '/etc/argus'
+  $ci_base_url              = $lsbmajdistrelease ? {
+    6       => 'http://radiohead.cnaf.infn.it:9999/view/All/job/trigger-pkg.argus/BUILD_PLATFORM=centos6/lastSuccessfulBuild/artifact/repo',
+    7       => 'http://radiohead.cnaf.infn.it:9999/view/All/job/trigger-pkg.argus/BUILD_PLATFORM=centos7/lastSuccessfulBuild/artifact/repo',
+    default => fail('Unsupported OS'),
+  }
+
+  $rpm_base_url             = pick($::base_url, $ci_base_url)
 
   $certificate_path         = '/etc/grid-security/hostcert.pem '
   $private_key_path         = '/etc/grid-security/hostkey.pem '

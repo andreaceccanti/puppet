@@ -1,20 +1,20 @@
 class argus::commons inherits argus::params {
   case $lsbmajdistrelease {
     6       : {
-      $repo_file        = '/etc/yum.repos.d/argus_el6.repo'
-      $repo_file_source = 'puppet:///modules/argus/argus_el6.repo'
+      $repo_file          = '/etc/yum.repos.d/argus_el6.repo'
+      $repo_file_template = 'argus/argus_el6.repo.erb'
 
-      $umd_repo         = 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm'
-      $install_umd_cmd  = "yum install -y ${umd_repo}"
-      $umd_repo_file    = '/etc/yum.repos.d/UMD-3-base.repo'
+      $umd_repo           = 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm'
+      $install_umd_cmd    = "yum install -y ${umd_repo}"
+      $umd_repo_file      = '/etc/yum.repos.d/UMD-3-base.repo'
     }
     7       : {
-      $repo_file        = '/etc/yum.repos.d/argus_el7.repo'
-      $repo_file_source = 'puppet:///modules/argus/argus_el7.repo'
+      $repo_file          = '/etc/yum.repos.d/argus_el7.repo'
+      $repo_file_template = 'argus/argus_el7.repo.erb'
 
-      $umd_repo         = 'http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm'
-      $install_umd_cmd  = "yum install -y ${umd_repo}"
-      $umd_repo_file    = '/etc/yum.repos.d/UMD-4-base.repo'
+      $umd_repo           = 'http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm'
+      $install_umd_cmd    = "yum install -y ${umd_repo}"
+      $umd_repo_file      = '/etc/yum.repos.d/UMD-4-base.repo'
 
     }
     default : {
@@ -42,12 +42,12 @@ class argus::commons inherits argus::params {
       require => File[$argus::params::grid_security_dir],;
 
     'argus-repo':
-      ensure => file,
-      path   => $repo_file,
-      owner  => root,
-      group  => root,
-      mode   => '0644',
-      source => $repo_file_source,;
+      ensure  => file,
+      path    => $repo_file,
+      owner   => root,
+      group   => root,
+      mode    => '0644',
+      content => template($repo_file_template),;
   }
 
   package { 'epel-release': ensure => latest, }

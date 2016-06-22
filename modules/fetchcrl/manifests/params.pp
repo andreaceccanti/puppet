@@ -3,7 +3,7 @@ class fetchcrl::params {
   $package_version              = 'latest'
 
   $fetchcrl_boot_service_name   = 'fetch-crl-boot'
-  $fetchcrl_boot_service_ensure = 'running'
+  $fetchcrl_boot_service_ensure = 'stopped'
   $fetchcrl_boot_service_enable = true
 
   $fetchcrl_cron_service_name   = 'fetch-crl-cron'
