@@ -1,31 +1,31 @@
 class storm::storm_webdav::params inherits storm::params {
-  $sysconfig_file                 = '/etc/sysconfig/storm-webdav'
+  $sysconfig_file = '/etc/sysconfig/storm-webdav'
   $srv_keydir = '/etc/grid-security/storm-webdav'
 
-  $jvm_opts   = '-Xms256m -Xmx512m -XX:MaxPermSize=256m -Djava.io.tmpdir=/var/lib/storm-webdav/work'
+  $jvm_opts = '-Xms256m -Xmx512m -XX:MaxPermSize=256m -Djava.io.tmpdir=/var/lib/storm-webdav/work'
   $https_port = '8443'
-  $http_port  = '8085'
-  $certificate_path               = '/etc/grid-security/storm-webdav/hostcert.pem'
-  $private_key_path               = '/etc/grid-security/storm-webdav/hostkey.pem'
-  $trust_anchors_dir              = '/etc/grid-security/certificates'
+  $http_port = '8085'
+  $certificate_path = '/etc/grid-security/storm-webdav/hostcert.pem'
+  $private_key_path = '/etc/grid-security/storm-webdav/hostkey.pem'
+  $trust_anchors_dir = '/etc/grid-security/certificates'
   $trust_anchors_refresh_interval = '86400'
-  $max_connections                = '300'
-  $max_queue_size                 = '900'
-  $connector_max_idle_time        = '30000'
-  $sa_config_dir                  = '/etc/storm/webdav/sa.d'
-  $jarfile    = '/usr/share/java/storm-webdav/storm-webdav-server.jar'
-  $logfile    = '/var/log/storm/webdav/storm-webdav-server.log'
-  $log_configuration              = '/etc/storm/webdav/logback.xml'
-  $access_log_configuration       = '/etc/storm/webdav/logback-access.xml'
-  $vo_map_files_enable            = false
-  $vo_map_files_config_dir        = '/etc/storm/webdav/vo-mapfiles.d'
-  $vo_map_files_refresh_interval  = '21600'
-  $debug_opt  = 'n'
+  $max_connections = '300'
+  $max_queue_size = '900'
+  $connector_max_idle_time = '30000'
+  $sa_config_dir = '/etc/storm/webdav/sa.d'
+  $jarfile = '/usr/share/java/storm-webdav/storm-webdav-server.jar'
+  $logfile = '/var/log/storm/webdav/storm-webdav-server.log'
+  $log_configuration = '/etc/storm/webdav/logback.xml'
+  $access_log_configuration = '/etc/storm/webdav/logback-access.xml'
+  $vo_map_files_enable = false
+  $vo_map_files_config_dir = '/etc/storm/webdav/vo-mapfiles.d'
+  $vo_map_files_refresh_interval = '21600'
+  $debug_opt = 'n'
   $debug_port = '1044'
-  $debug_suspend                  = 'y'
-  $jvm        = '/usr/lib/jvm/java/bin/java'
+  $debug_suspend = 'y'
+  $jvm = '/usr/lib/jvm/java/bin/java'
 
-  $test_vos   = {
+  $test_vos = {
     'dteam'             => {
       fstype         => 'posixfs',
       access_points  => '/dteam',

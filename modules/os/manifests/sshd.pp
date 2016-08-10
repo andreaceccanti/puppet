@@ -7,7 +7,7 @@ class os::sshd {
     $provider = 'systemd'
   }
 
-  package { 'openssh-server': ensure => installed }
+  package { 'openssh-server': ensure => installed, }
 
   service { 'sshd':
     ensure   => running,

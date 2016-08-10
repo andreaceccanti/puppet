@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>ci-puppet-modules</project>
+		<project>code</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -21,4 +22,10 @@
 		<nature>com.puppetlabs.geppetto.pp.dsl.ui.puppetNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>MODULE_LOC</name>
+			<value>file:/home/marco/.puppet</value>
+		</variable>
+	</variableList>
 </projectDescription>

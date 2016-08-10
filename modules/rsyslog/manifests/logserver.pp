@@ -12,7 +12,7 @@ class rsyslog::logserver inherits rsyslog::params {
   service { 'httpd':
     ensure  => running,
     enable  => true,
-    restart => '/etc/init.d/httpd restart';
+    restart => '/etc/init.d/httpd restart',;
   }
 
   exec { 'rsyslog_downgrade':

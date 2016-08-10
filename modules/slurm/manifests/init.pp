@@ -107,7 +107,7 @@ class slurm inherits slurm::params {
 
     }
     'Debian' : {
-      package { $slurm::params::pkg_name: ensure => installed }
+      package { $slurm::params::pkg_name: ensure => installed, }
     }
     default  : {
       fail('Unsupported OS')

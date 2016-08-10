@@ -5,7 +5,7 @@ class zabbix inherits zabbix::params {
   } ->
   group { $zabbix::params::zabbix_group: ensure => present, } ->
   user { $zabbix::params::zabbix_user:
-    ensure     => 'present',
+    ensure     => present,
     home       => $zabbix::params::zabbix_user_home_dir,
     shell      => '/bin/bash',
     gid        => 'zabbix',
@@ -17,7 +17,7 @@ class zabbix inherits zabbix::params {
       ensure => directory,
       owner  => root,
       group  => root,
-      mode   => '0755';
+      mode   => '0755',;
 
     $zabbix::params::zabbix_log_dir:
       ensure => directory,

@@ -19,7 +19,7 @@ class puppet::master inherits puppet {
       owner  => root,
       group  => root,
       mode   => '0644',
-      notify => Service['httpd'];
+      notify => Service['httpd'],;
 
     'dashboard-vhost.conf':
       ensure  => present,
@@ -28,7 +28,7 @@ class puppet::master inherits puppet {
       owner   => root,
       group   => root,
       mode    => '0644',
-      notify  => Service['httpd'];
+      notify  => Service['httpd'],;
 
     'puppet-backup.cron':
       ensure  => present,
@@ -36,7 +36,7 @@ class puppet::master inherits puppet {
       content => template('puppet/puppet-backup.cron.erb'),
       owner   => root,
       group   => root,
-      mode    => '0755';
+      mode    => '0755',;
   }
 
   mount { '/var/lib/puppet':
