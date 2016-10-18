@@ -1,15 +1,4 @@
-/.settings
-/.classpath
-/.project
-/target
-/rpmbuild
-/debbuild
-/RPMS
-/tgz
-/*.tar.gz
-/.pc
-argus-pep-server.spec
-/bin/
-**/pkg
+.settings
+.project
 .sonar/
 sonar-project.properties
