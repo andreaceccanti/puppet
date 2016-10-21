@@ -1,13 +1,14 @@
 {
-  "name": "puppet-argus",
+  "name": "marcocaberletti-argus",
   "version": "0.1.0",
-  "author": "puppet",
+  "author": "marcocaberletti",
   "summary": "Argus services",
   "license": "Apache-2.0",
-  "source": "https://github.com/marcocaberletti/puppet/tree/master/modules/argus",
-  "project_page": "https://github.com/marcocaberletti/puppet",
+  "source": "https://github.com/marcocaberletti/puppet",
+  "project_page": "https://github.com/marcocaberletti/puppet/projects",
   "issues_url": "https://github.com/marcocaberletti/puppet/issues",
   "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }
 

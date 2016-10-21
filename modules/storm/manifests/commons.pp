@@ -1,8 +1,8 @@
 class storm::commons {
-  require puppet-emi3-release
+  require mwdevel_emi3_release
 
-  $_storm_user   = $storm::params::user
-  $_storm_group  = $storm::params::group
+  $_storm_user = $storm::params::user
+  $_storm_group = $storm::params::group
   $_storage_root = $storm::params::storage_root
 
   package { ['fetch-crl', 'attr', 'acl']: ensure => installed, }

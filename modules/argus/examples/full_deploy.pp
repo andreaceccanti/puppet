@@ -10,14 +10,14 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 
-include puppet-infn-ca
-include puppet-test-ca
-include puppet-egi-trust-anchors
+include mwdevel_infn_ca
+include mwdevel_test_ca
+include mwdevel_egi_trust_anchors
 
 include haveged
 include argus
 
 class { 'fetchcrl':
-  require => Class['puppet-egi-trust-anchors'],;
+  require => Class['mwdevel_egi_trust_anchors'],;
 }
 
