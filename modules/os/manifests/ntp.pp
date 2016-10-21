@@ -21,7 +21,6 @@ class os::ntp {
     ensure    => running,
     name      => $ntp_service,
     enable    => true,
-    restart   => 'service ntpd restart',
     subscribe => File['ntp.conf'],
     require   => [Package['ntp'], File['ntp.conf']],
   }
