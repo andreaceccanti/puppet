@@ -37,7 +37,7 @@ class argus::params {
   $pap_poll_interval        = '300'
   $pap_ordering             = 'default'
   $pap_consistency_check    = true
-  $pap_consistency_check_repair            = false
+  $pap_consistency_check_repair                       = false
   $pap_home                 = '/usr/share/argus/pap'
   $pap_pid                  = '/var/run/argus-pap.pid'
   $pap_java_opts            = ''
@@ -72,21 +72,21 @@ class argus::params {
   $pep_enable_ssl           = true
   $req_client_cert_auth     = true
 
-  $request_validator_pip_parser_class      = 'org.glite.authz.pep.pip.provider.RequestValidatorPIPIniConfigurationParser'
+  $request_validator_pip_parser_class                 = 'org.glite.authz.pep.pip.provider.RequestValidatorPIPIniConfigurationParser'
   $request_validator_pip_validate_request_subjects    = true
   $request_validator_pip_validate_request_resources   = true
   $request_validator_pip_validate_request_action      = true
   $request_validator_pip_validate_request_environment = false
 
   $openssl_pip_parser_class = 'org.glite.authz.pep.pip.provider.OpenSSLSubjectPIPIniConfigurationParser'
-  $openssl_pip_subject_attribute_ids       = 'http://glite.org/xacml/attribute/subject-issuer urn:oasis:names:tc:xacml:1.0:subject:subject-id'
-  $openssl_pip_subject_attribute_datatypes = 'http://www.w3.org/2001/XMLSchema#string'
+  $openssl_pip_subject_attribute_ids                  = 'http://glite.org/xacml/attribute/subject-issuer urn:oasis:names:tc:xacml:1.0:subject:subject-id'
+  $openssl_pip_subject_attribute_datatypes            = 'http://www.w3.org/2001/XMLSchema#string'
 
-  $glite_xacml_pip_parser_class            = 'org.glite.authz.pep.pip.provider.AuthorizationProfilePIPIniConfigurationParser'
-  $glite_xacml_pip_accepted_profile_ids    = 'http://glite.org/xacml/profile/grid-ce/1.0 http://glite.org/xacml/profile/grid-wn/1.0'
+  $glite_xacml_pip_parser_class                       = 'org.glite.authz.pep.pip.provider.AuthorizationProfilePIPIniConfigurationParser'
+  $glite_xacml_pip_accepted_profile_ids               = 'http://glite.org/xacml/profile/grid-ce/1.0 http://glite.org/xacml/profile/grid-wn/1.0'
 
-  $common_xacml_pip_parser_class           = 'org.glite.authz.pep.pip.provider.CommonXACMLAuthorizationProfilePIPIniConfigurationParser'
-  $common_xacml_pip_accepted_profile_ids   = 'http://dci-sec.org/xacml/profile/common-authz/1.1'
+  $common_xacml_pip_parser_class                      = 'org.glite.authz.pep.pip.provider.CommonXACMLAuthorizationProfilePIPIniConfigurationParser'
+  $common_xacml_pip_accepted_profile_ids              = 'http://dci-sec.org/xacml/profile/common-authz/1.1'
 
   $account_map_parser_class = 'org.glite.authz.pep.obligation.dfpmap.DFPMObligationHandlerConfigurationParser'
   $account_map_file         = '/etc/grid-security/grid-mapfile'
@@ -96,10 +96,10 @@ class argus::params {
   $voms_dir                 = '/etc/grid-security/vomsdir'
   $voms_map_file            = '/etc/grid-security/voms-grid-mapfile'
 
-  $use_secondary_group_names_for_mapping   = false
+  $use_secondary_group_names_for_mapping              = false
   $prefer_dn_for_login_name = true
-  $prefer_dn_for_primary_group_name        = true
-  $no_primary_group_name_is_error          = false
+  $prefer_dn_for_primary_group_name                   = true
+  $no_primary_group_name_is_error                     = false
 
   $pepd_jopts               = '-Xmx256M -Djdk.tls.trustNameService=true'
   $pepd_start_jopts         = ''

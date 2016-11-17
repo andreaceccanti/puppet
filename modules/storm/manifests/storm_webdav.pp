@@ -1,4 +1,5 @@
-class storm::storm_webdav ($vo_list = []) inherits storm::storm_webdav::params {
+class storm::storm_webdav (
+  $vo_list = [],) inherits storm::storm_webdav::params {
   require storm::commons
 
   $_storm_user = $storm::params::user

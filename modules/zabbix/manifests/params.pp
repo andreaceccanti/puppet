@@ -44,7 +44,7 @@ class zabbix::params {
           $repo = $::lsbdistcodename ? {
             /precise/ => 'http://repo.zabbix.com/zabbix/2.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_2.0-1precise_all.deb',
             /lucid/   => 'http://repo.zabbix.com/zabbix/2.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_2.0-1lucid_all.deb',
-            default   => ''
+            default   => '',
           } }
         'Debian' : {
           case $::lsbdistcodename {
@@ -72,6 +72,9 @@ class zabbix::params {
       $install_repo_command = "dpkg -i ${repo}"
       $restart_command      = '/etc/init.d/zabbix-agent restart'
       $agent_conf_file      = '/etc/zabbix/zabbix_agentd.conf'
+    }
+    default  : {
+      fail('Unsupported OS')
     }
   }
 

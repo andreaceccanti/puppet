@@ -1,6 +1,13 @@
 class zabbix::agent inherits zabbix {
   $hw_details_script = '/var/lib/zabbix/hw_full_details'
 
+  File {
+    owner   => root,
+    group   => root,
+    require => [Package[$zabbix::params::pkg_agent], File[$zabbix::params::zabbix_config_dir]],
+    notify  => Service[$zabbix::params::agent_srv],
+  }
+
   package { $zabbix::params::pkg_agent:
     ensure  => latest,
     require => Exec['zabbix_repo'],
@@ -11,13 +18,6 @@ class zabbix::agent inherits zabbix {
     enable  => true,
     restart => $restart_command,
     require => Package[$zabbix::params::pkg_agent],
-  }
-
-  File {
-    owner   => root,
-    group   => root,
-    require => [Package[$zabbix::params::pkg_agent], File[$zabbix::params::zabbix_config_dir]],
-    notify  => Service[$zabbix::params::agent_srv],
   }
 
   file {
