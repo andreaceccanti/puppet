@@ -35,7 +35,7 @@ class argus::pepd (
   $pepd_jopts               = $argus::params::pepd_jopts,
   $pepd_start_jopts         = $argus::params::pepd_start_jopts,
   $pepd_home                = $argus::params::pepd_home,
-  $pepd_logdir              = $argus::params::pepd_libdir,
+  $pepd_logdir              = $argus::params::pepd_logdir,
   $pepd_libdir              = $argus::params::pepd_libdir,
   $pepd_endorseddir         = $argus::params::pepd_endorseddir,
   $pepd_provideddir         = $argus::params::pepd_provideddir,
