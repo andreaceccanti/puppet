@@ -35,6 +35,9 @@ class rsyslog::params {
       $downgrade_command = 'echo'
       $downgrade_test = 'test 0 -eq 1'
     }
+    default  : {
+      fail('Unsupported OS')
+    }
   }
 
   $db_host = 'rd-logserver.cnaf.infn.it'

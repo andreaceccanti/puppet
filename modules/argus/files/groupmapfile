@@ -1,8 +1,0 @@
-"/testers.eu-emi.eu/Role=VO-Admin/Capability=NULL" sgmtesters
-"/testers.eu-emi.eu/Role=VO-Admin" sgmtesters
-"/testers.eu-emi.eu/Role=pilot/Capability=NULL" piltesters
-"/testers.eu-emi.eu/Role=pilot" piltesters
-"/testers.eu-emi.eu/Role=NULL/Capability=NULL" testers
-"/testers.eu-emi.eu" testers
-"/test.vo/Role=NULL/Capability=NULL" testvo
-"/test.vo" testvo

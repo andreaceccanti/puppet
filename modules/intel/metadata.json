@@ -1,13 +1,14 @@
 {
-  "name": "puppet-intel",
+  "name": "marcocaberletti-intel",
   "version": "0.1.0",
   "author": "Marco Caberletti",
   "summary": "Intel devices utility",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": "",
-  "issues_url": "",
+  "source": "https://github.com/marcocaberletti/puppet",
+  "project_page": "https://github.com/marcocaberletti/puppet/projects",
+  "issues_url": "https://github.com/marcocaberletti/puppet/issues",
   "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }
 
