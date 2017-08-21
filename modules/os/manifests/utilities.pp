@@ -27,8 +27,10 @@ class os::utilities {
     'nmap':
       ensure => latest,;
 
+    'socat':
+      ensure => latest,;
+
     'sysstat':
       ensure => latest,;
   }
-
 }

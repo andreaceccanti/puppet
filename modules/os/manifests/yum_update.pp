@@ -6,5 +6,4 @@ class os::yum_update {
     enable  => true,
     require => Package['yum-cron'],
   }
-
 }

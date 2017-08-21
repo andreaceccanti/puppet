@@ -28,5 +28,4 @@ class os {
   }
 
   File['backup'] -> Mount['/mnt/backup']
-
 }

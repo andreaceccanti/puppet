@@ -2,13 +2,12 @@
   "name": "marcocaberletti-fetchcrl",
   "version": "0.1.0",
   "author": "puppet",
-  "summary": null,
+  "summary": "Fetchcrl utility module",
   "license": "Apache-2.0",
   "source": "https://github.com/marcocaberletti/puppet",
   "project_page": "https://github.com/marcocaberletti/puppet/projects",
   "issues_url": "https://github.com/marcocaberletti/puppet/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    { "name":"puppetlabs-stdlib", "version_requirement":">= 1.0.0" }
   ]
 }
-
