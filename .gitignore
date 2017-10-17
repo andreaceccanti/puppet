@@ -1,4 +1,4 @@
 .settings
 .project
 .sonar/
-sonar-project.properties
+.scannerwork/

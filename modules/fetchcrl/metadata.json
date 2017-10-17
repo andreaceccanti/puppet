@@ -1,7 +1,7 @@
 {
   "name": "marcocaberletti-fetchcrl",
   "version": "0.1.0",
-  "author": "puppet",
+  "author": "Marco Caberletti",
   "summary": "Fetchcrl utility module",
   "license": "Apache-2.0",
   "source": "https://github.com/marcocaberletti/puppet",
