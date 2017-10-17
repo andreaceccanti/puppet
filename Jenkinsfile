@@ -25,10 +25,10 @@ pipeline {
 
     stage('build') {
       steps {
-        dir('os'){
+        dir('modules/os'){
           sh '/opt/puppetlabs/bin/puppet module build'
         }
-        dir('haveged'){
+        dir('modules/haveged'){
           sh '/opt/puppetlabs/bin/puppet module build'
         }
       }
@@ -36,10 +36,10 @@ pipeline {
 
     stage('archive') {
       steps {
-        dir('os/pkg'){
+        dir('modules/os/pkg'){
           archiveArtifacts 'mcaberletti-os-*.tar.gz'
         }
-        dir('haveged/pkg'){
+        dir('modules/haveged/pkg'){
           archiveArtifacts 'mcaberletti-haveged-*.tar.gz'
         }
       }
