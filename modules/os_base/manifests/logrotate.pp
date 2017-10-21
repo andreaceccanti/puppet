@@ -7,6 +7,6 @@ class os_base::logrotate {
     group   => root,
     mode    => '0644',
     require => Package['logrotate'],
-    content => template('os/logrotate.conf.erb'),
+    content => template('os_base/logrotate.conf.erb'),
   }
 }
