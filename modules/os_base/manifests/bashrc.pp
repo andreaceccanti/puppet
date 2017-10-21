@@ -4,6 +4,6 @@ class os::bashrc {
     owner  => root,
     group  => root,
     mode   => '0644',
-    source => 'puppet:///modules/os/alias.sh',
+    source => 'puppet:///modules/os_base/alias.sh',
   }
 }

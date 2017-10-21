@@ -1,4 +1,4 @@
-class os::logrotate {
+class os_base::logrotate {
   package { 'logrotate': ensure => latest, }
 
   file { '/etc/logrotate.conf':

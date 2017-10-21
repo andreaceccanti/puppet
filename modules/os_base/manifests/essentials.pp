@@ -1,4 +1,4 @@
-class os::essentials {
+class os_base::essentials {
   if $::operatingsystem =~ /RedHat|CentOS|Scientific|Fedora/ {
     $cron           = ['cronie', 'crontabs', 'cronie-anacron']
     $dns_utils      = ['bind-utils']

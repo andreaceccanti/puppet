@@ -1,10 +1,8 @@
-class haveged::service (
-  $ensure = $haveged::params::service_ensure,
-  $enable = $haveged::params::service_enable,) inherits haveged::params {
+class haveged::service {
   require haveged::install
 
-  service { $haveged::params::service_name:
-    ensure => $ensure,
-    enable => $enable,
+  service { 'haveged':
+    ensure => $haveged::service_ensure,
+    enable => $haveged::service_enable,
   }
 }

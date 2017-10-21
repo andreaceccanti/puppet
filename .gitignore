@@ -2,3 +2,4 @@
 .project
 .sonar/
 .scannerwork/
+**/pkg/

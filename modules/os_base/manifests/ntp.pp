@@ -1,4 +1,4 @@
-class os::ntp {
+class os_base::ntp {
   $ntp_service = $::osfamily ? {
     /RedHat/ => 'ntpd',
     /Debian/ => 'ntp',
@@ -14,7 +14,7 @@ class os::ntp {
     owner   => root,
     group   => root,
     mode    => '0644',
-    source  => 'puppet:///modules/os/ntp.conf',
+    source  => 'puppet:///modules/os_base/ntp.conf',
   }
 
   service { 'ntpd':

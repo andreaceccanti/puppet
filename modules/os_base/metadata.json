@@ -1,8 +1,8 @@
 {
-	"name": "mcaberletti-os",
-	"version": "0.1.0",
+	"name": "mcaberletti-os_base",
+	"version": "0.1.1",
 	"author": "Marco Caberletti",
-	"summary": "OS basic utility",
+	"summary": "OS basic setup",
 	"license": "Apache-2.0",
 	"source": "https://github.com/marcocaberletti/puppet",
 	"project_page": "https://github.com/marcocaberletti/puppet/projects",
@@ -10,6 +10,10 @@
 	"dependencies": [{
 			"name": "puppetlabs-stdlib",
 			"version_requirement": ">= 1.0.0"
+		},
+		{
+			"name": "stahnma-epel",
+			"version_requirement": ">=1.2.2"
 		}
 	]
 }
