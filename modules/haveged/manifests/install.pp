@@ -1,5 +1,5 @@
 class haveged::install {
-  require epel;
+  require epel
 
   package { 'haveged':
     ensure  => $haveged::version,
