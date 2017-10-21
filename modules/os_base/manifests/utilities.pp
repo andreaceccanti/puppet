@@ -1,5 +1,5 @@
 class os_base::utilities {
-  require epel;
+  require epel
 
   $packages = [
     'acpid',

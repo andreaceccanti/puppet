@@ -1,5 +1,5 @@
 class slurm inherits slurm::params {
-  include os::ntp
+  include os_base::ntp
 
   package { 'munge': ensure => latest, }
 
