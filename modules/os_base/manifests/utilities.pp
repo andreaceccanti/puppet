@@ -2,7 +2,6 @@ class os_base::utilities {
   require epel
 
   $packages = [
-    'acpid',
     'bind-utils',
     'facter',
     'fuse-sshfs',

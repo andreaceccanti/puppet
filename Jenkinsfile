@@ -1,5 +1,14 @@
 #!/usr/bin/env groovy
 
+def build_module(module_name){
+  dir("modules/${module_name}"){
+    sh '/opt/puppetlabs/bin/puppet module build'
+  }
+  dir("modules/${module_name}/pkg"){
+    archiveArtifacts '*.tar.gz'
+  }
+}
+
 pipeline {
   agent { label 'generic' }
 
@@ -25,26 +34,14 @@ pipeline {
 
     stage('build') {
       steps {
-        dir('modules/os_base'){
-          sh '/opt/puppetlabs/bin/puppet module build'
-        }
-        dir('modules/haveged'){
-          sh '/opt/puppetlabs/bin/puppet module build'
+        script {
+          build_module('os_base')
+          build_module('haveged')
+          build_module('fetchcrl')
         }
       }
     }
 
-    stage('archive') {
-      steps {
-        dir('modules/os_base/pkg'){
-          archiveArtifacts 'mcaberletti-os_base-*.tar.gz'
-        }
-        dir('modules/haveged/pkg'){
-          archiveArtifacts 'mcaberletti-haveged-*.tar.gz'
-        }
-      }
-    }
-    
    stage('result'){
      steps {
        script {
