@@ -1,5 +1,5 @@
 {
-  "name": "marcocaberletti-rsyslog",
+  "name": "mcaberletti-rsyslog",
   "version": "0.1.0",
   "author": "Marco Caberletti",
   "summary": "Rsyslog setup module",

@@ -1,5 +1,5 @@
 {
-  "name": "marcocaberletti-ldapauth",
+  "name": "mcaberletti-ldapauth",
   "version": "0.1.0",
   "author": "Marco Caberletti",
   "summary": "LDAP authN and authZ",
