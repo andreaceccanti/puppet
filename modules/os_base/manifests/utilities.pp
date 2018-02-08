@@ -3,6 +3,7 @@ class os_base::utilities {
 
   $packages = [
     'bind-utils',
+    'conntrack-tools',
     'facter',
     'fuse-sshfs',
     'man-pages',
