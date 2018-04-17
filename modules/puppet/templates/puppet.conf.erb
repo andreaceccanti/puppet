@@ -1,17 +1,18 @@
-[main]
-    logdir = /var/log/puppet
-    rundir = /var/run/puppet
-    ssldir = $vardir/ssl
-
+<% if scope['puppet::master::is_puppetmaster'] -%>
 [master]
-    certname = <%= @puppet_server %>
-    reports = store, http
-    reporturl = http://<%= @puppet_server %>:3000/reports/upload
+vardir = /opt/puppetlabs/server/data/puppetserver
+logdir = /var/log/puppetlabs/puppetserver
+rundir = /var/run/puppetlabs/puppetserver
+pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
+codedir = /etc/puppetlabs/code
+certname = <%= @hostname %>
+<% unless [nil, :undefined, :undef, ''].include?(scope['puppet::master::dns_alt_names']) -%>
+dns_alt_names = <%= Array(scope['puppet::master::dns_alt_names']).join(',') %>
+<% end -%>
+<% end -%>
 
-[agent]
-    classfile = $vardir/classes.txt
-    localconfig = $vardir/localconfig
-    server = <%= @puppet_server %>
-    report = true
-    pluginsync = true
-    certname = <%= @fqdn %>
+[main]
+certname = <%= @hostname %>
+server = <%= scope['puppet::agent::masterhost'] %>
+environment = production
+runinterval = 1h

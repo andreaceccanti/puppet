@@ -17,6 +17,7 @@ class os_base::utilities {
     'tcpdump',
     'telnet',
     'tree',
+    'tzdata',
     'unzip',
     'xfsprogs',
     'xz',

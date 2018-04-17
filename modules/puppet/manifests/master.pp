@@ -1,52 +1,24 @@
-class puppet::master inherits puppet {
-  package { ['puppet-server', 'httpd']: ensure => installed, }
+class puppet::master (
+  $version         = '5.2.0-1.el7',
+  $is_puppetmaster = true,
+  $dns_alt_names   = undef,) {
+  include puppet::repo
 
-  service { 'puppetmaster':
-    ensure => stopped,
-    enable => false,
+  package { 'puppetserver':
+    ensure  => $version,
+    require => Exec['puppet-repo'],;
   }
 
-  service { 'httpd':
-    ensure => running,
-    enable => true,
+  file { 'master_conf':
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    content => template('puppet/puppet.conf.erb'),
+    mode    => '0644',
   }
 
-  file {
-    'puppetmaster.conf':
-      ensure => present,
-      path   => '/etc/httpd/conf.d/puppetmaster.conf',
-      source => 'puppet:///modules/puppet/puppetmaster.conf',
-      owner  => root,
-      group  => root,
-      mode   => '0644',
-      notify => Service['httpd'],;
-
-    'dashboard-vhost.conf':
-      ensure  => present,
-      path    => '/etc/httpd/conf.d/dashboard-vhost.conf',
-      content => template('puppet/dashboard-vhost.conf.erb'),
-      owner   => root,
-      group   => root,
-      mode    => '0644',
-      notify  => Service['httpd'],;
-
-    'puppet-backup.cron':
-      ensure  => present,
-      path    => '/etc/cron.daily/puppet-backup.cron',
-      content => template('puppet/puppet-backup.cron.erb'),
-      owner   => root,
-      group   => root,
-      mode    => '0755',;
+  service { 'puppetserver':
+    ensure    => running,
+    enable    => true,
+    subscribe => [Package['puppetserver'], File['master_conf']],
   }
-
-  mount { '/var/lib/puppet':
-    ensure   => mounted,
-    device   => 'rd-storage:/mnt/tank/puppet',
-    fstype   => 'nfs',
-    options  => 'defaults',
-    remounts => false,
-    atboot   => true,
-  }
-
-  Mount['/var/lib/puppet'] -> Service['httpd']
 }

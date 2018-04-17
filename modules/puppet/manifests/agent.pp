@@ -1,24 +1,24 @@
-class puppet::agent inherits puppet {
-  package { 'puppet':
+class puppet::agent (
+  $version    = '5.5.0-1.el7',
+  $masterhost = undef) {
+  #
+  include puppet::repo
+
+  package { 'puppet-agent':
     ensure  => latest,
     require => Exec['puppet-repo'],
   }
 
-  service { $agentname:
-    ensure   => running,
-    provider => $provider,
-    enable   => true,
-    require  => Package['puppet'],
+  file { 'agent_conf':
+    ensure  => present,
+    path    => '/etc/puppetlabs/puppet/puppet.conf',
+    content => template('puppet/puppet.conf.erb'),
+    require => Package['puppet-agent'],
   }
 
-  file { 'puppet.conf':
-    ensure  => present,
-    path    => '/etc/puppet/puppet.conf',
-    content => template('puppet/puppet.conf.erb'),
-    owner   => 'puppet',
-    group   => 'puppet',
-    require => Package['puppet'],
-    notify  => Service[$agentname],
+  service { 'puppet':
+    ensure    => running,
+    enable    => true,
+    subscribe => [Package['puppet-agent'], File['agent_conf']],
   }
 }
-

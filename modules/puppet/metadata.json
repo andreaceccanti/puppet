@@ -1,14 +1,15 @@
 {
-  "name": "mcaberletti-puppet",
-  "version": "0.1.0",
-  "author": "Marco Caberletti",
-  "summary": "Puppet server and agent setup",
-  "license": "Apache-2.0",
-  "source": "https://github.com/marcocaberletti/puppet",
-  "project_page": "https://github.com/marcocaberletti/puppet/projects",
-  "issues_url": "https://github.com/marcocaberletti/puppet/issues",
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
-  ]
+	"name": "mcaberletti-puppet",
+	"version": "0.1.0",
+	"author": "Marco Caberletti",
+	"summary": "Puppet server and agent setup",
+	"license": "Apache-2.0",
+	"source": "https://github.com/marcocaberletti/puppet",
+	"project_page": "https://github.com/marcocaberletti/puppet/projects",
+	"issues_url": "https://github.com/marcocaberletti/puppet/issues",
+	"dependencies": [{
+			"name": "puppetlabs-stdlib",
+			"version_requirement": ">= 1.0.0"
+		}
+	]
 }
-
