@@ -1,11 +1,11 @@
 class puppet::agent (
-  $version    = '5.5.0-1.el7',
+  $version    = 'latest',
   $masterhost = undef) {
   #
   include puppet::repo
 
   package { 'puppet-agent':
-    ensure  => latest,
+    ensure  => $version,
     require => Exec['puppet-repo'],
   }
 
